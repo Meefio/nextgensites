@@ -6,6 +6,7 @@ import { Testimonials } from "@/components/testimonials";
 import { Faq } from "@/components/faq";
 import { Footer } from "@/components/footer";
 import { BlogSection } from "@/components/blog-section";
+import { TimelineSection } from "@/components/TimelineSection";
 
 export default function HomePage() {
   return (
@@ -13,6 +14,7 @@ export default function HomePage() {
       <Header />
       <Hero />
       <Features />
+      <TimelineSection />
       <Pricing />
       <Testimonials />
       <Faq />
