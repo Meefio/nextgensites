@@ -49,8 +49,6 @@ export function Hero() {
           width={1000}
           height={698}
           priority
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
-          placeholder="blur"
           className="rounded-xl border border-border shadow-lg"
         />
         <div className="absolute inset-0 -z-10 bg-primary/20 [filter:blur(180px)]" />

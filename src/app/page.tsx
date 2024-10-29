@@ -7,14 +7,18 @@ import { Faq } from "@/components/faq";
 import { Footer } from "@/components/footer";
 import { BlogSection } from "@/components/blog-section";
 import { TimelineSection } from "@/components/TimelineSection";
+import { CtaSection } from "@/components/cta";
+import { SocialProof } from "@/components/SocialProof";
 
 export default function HomePage() {
   return (
     <>
       <Header />
       <Hero />
+      <SocialProof />
       <Features />
       <TimelineSection />
+      <CtaSection />
       <Pricing />
       <Testimonials />
       <Faq />

@@ -89,7 +89,7 @@ export function Header() {
           </nav>
         </div>
       </MobileNavbar>
-      <div className="bg-primary/50 [filter:blur(100px)] absolute right-0 top-[300px] md:size-64 size-32" />
+      {/* <div className="bg-primary/20 [filter:blur(100px)] absolute right-0 top-[300px] md:size-64 size-32" /> */}
     </header>
   );
 }

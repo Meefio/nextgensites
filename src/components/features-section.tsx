@@ -6,7 +6,7 @@ import { BorderBeam } from "@/components/magicui/border-beam";
 export function Features() {
   return (
     <section className="container flex flex-col items-center gap-6 py-24 sm:gap-7">
-      <div className="bg-primary/50 [filter:blur(100px)] absolute md:size-64 size-32 top-[1200px] left-0 -z-10" />
+      {/* <div className="bg-primary/50 [filter:blur(100px)] absolute md:size-64 size-32 top-[1200px] left-0 -z-10" /> */}
       <div className="flex flex-col gap-3">
         <span className="font-bold uppercase text-primary text-center">
           Dlaczego nextgen sites?

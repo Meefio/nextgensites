@@ -54,7 +54,7 @@ export function TimelineSection() {
     ];
   return (
     <div className="w-full relative">
-      <div className="bg-primary/50 [filter:blur(100px)] absolute right-0 top-[50%] md:size-64 size-32" />
+      <div className="bg-primary/20 [filter:blur(180px)] absolute right-0 top-[50%] md:size-64 size-32" />
       <Timeline data={data} />
     </div>
   );
