@@ -42,9 +42,10 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
 	return (
 		<section
-			className='container flex flex-col items-center gap-6 py-24 md:px-10'
+			className='relative container flex flex-col items-center gap-6 py-24 md:px-10 max-w-[900px]'
 			ref={containerRef}
 		>
+         
 			<div className='flex flex-col gap-3 animate-fade-in'>
 				<span className='font-bold uppercase text-primary text-center'>
 					Jak działamy
@@ -52,29 +53,29 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 				<h2 className='font-heading text-3xl font-semibold tracking-tight sm:text-4xl text-balance text-center'>
 					Proces współpracy krok po kroku
 				</h2>
-				<p className='text-lg text-muted-foreground text-balance max-w-lg text-center'>
-					Przejrzysty plan współpracy od kontaktu po finalizację
-					projektu
+				<p className='text-lg text-muted-foreground text-balance text-center'>
+					Przejrzysty plan współpracy od kontaktu <br/>po finalizację projektu
 				</p>
 			</div>
+         
 
 			<div ref={ref} className='relative mx-auto pb-20'>
 				{data.map((item, index) => (
 					<div
 						key={index}
-						className='flex justify-start pt-10 md:pt-40 md:gap-10'
+						className='flex justify-start pt-10 md:pt-40 md:gap-x-14'
 					>
 						<div className='sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs md:w-full'>
-							<div className='h-10 absolute left-3 w-10 rounded-full bg-background flex items-center justify-center'>
+							<div className='h-14 absolute left-3 w-10 rounded-full bg-background flex items-center justify-center'>
 								<div className='h-4 w-4 rounded-full bg-muted-foreground p-2' />
 							</div>
-							<h3 className='hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-muted-foreground'>
+							<h3 className='hidden md:block text-lg md:pl-20 md:text-lg font-bold text-muted-foreground'>
 								{item.title}
 							</h3>
 						</div>
 
 						<div className='relative pl-20 pr-4 md:pl-4 w-full'>
-							<h3 className='md:hidden block text-2xl mb-4 text-left font-bold text-muted-foreground'>
+							<h3 className='md:hidden block text-lg mb-4 text-left font-bold text-muted-foreground'>
 								{item.title}
 							</h3>
 							{item.content}

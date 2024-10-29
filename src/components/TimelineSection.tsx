@@ -2,89 +2,59 @@ import React from "react";
 import { Timeline } from "@/components/ui/timeline";
 
 export function TimelineSection() {
-  const data = [
-    {
-      title: "Jak działamy",
-      content: (
-        <div>
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-            Built and launched Aceternity UI and Aceternity UI Pro from scratch
+   const data = [
+      {
+        title: "Kontakt i konsultacja",
+        content: (
+          <p className="text-muted-foreground">
+            Skontaktuj się z nami przez formularz, telefon lub e-mail, aby przedstawić swoje potrzeby i oczekiwania. Umówimy się na konsultację, aby lepiej poznać Twój projekt.
           </p>
-          <div className="grid grid-cols-2 gap-4">
-           
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "Early 2023",
-      content: (
-        <div>
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-            I usually run out of copy, but when I see content this big, I try to
-            integrate lorem ipsum.
+        ),
+      },
+      {
+        title: "Kwestionariusz projektowy",
+        content: (
+          <p className="text-muted-foreground">
+            Po rozmowie poprosimy Cię o odpowiedź na kilka pytań, które pomogą nam zrozumieć wymagania i cele biznesowe. Dzięki temu lepiej dopasujemy zakres usług i przygotujemy wycenę.
           </p>
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-            Lorem ipsum is for people who are too lazy to write copy. But we are
-            not. Here are some more example of beautiful designs I built.
+        ),
+      },
+      {
+        title: "Otrzymanie wyceny i akceptacja kosztów",
+        content: (
+          <p className="text-muted-foreground">
+            Na podstawie informacji przygotujemy wycenę i harmonogram projektu. Po akceptacji kosztów, przystępujemy do realizacji.
           </p>
-          <div className="grid grid-cols-2 gap-4">
-           
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "Early 2023",
-      content: (
-        <div>
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-            I usually run out of copy, but when I see content this big, I try to
-            integrate lorem ipsum.
+        ),
+      },
+      {
+        title: "Przygotowanie draftu treści na stronę",
+        content: (
+          <p className="text-muted-foreground">
+            Rozpoczynamy od opracowania treści na stronę, zgodnie z wytycznymi i celem biznesowym. Przedstawimy draft do Twojej akceptacji lub poprawek.
           </p>
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-8">
-            Lorem ipsum is for people who are too lazy to write copy. But we are
-            not. Here are some more example of beautiful designs I built.
+        ),
+      },
+      {
+        title: "Projekt strony i układ graficzny",
+        content: (
+          <p className="text-muted-foreground">
+            Tworzymy wstępny projekt strony, uwzględniając UX/UI oraz estetykę dopasowaną do Twojej marki. Projekt zostanie przesłany do akceptacji lub ewentualnych poprawek.
           </p>
-          <div className="grid grid-cols-2 gap-4">
-           
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "Changelog",
-      content: (
-        <div>
-          <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm font-normal mb-4">
-            Deployed 5 new components on Aceternity today
+        ),
+      },
+      {
+        title: "Poprawki i finalizacja",
+        content: (
+          <p className="text-muted-foreground">
+            Po uwzględnieniu uwag dokonujemy ostatnich poprawek. Po finalnej akceptacji wdrażamy stronę na serwer, a Ty otrzymujesz w pełni funkcjonalny i zoptymalizowany serwis gotowy do działania.
           </p>
-          <div className="mb-8">
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-              ✅ Card grid component
-            </div>
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-              ✅ Startup template Aceternity
-            </div>
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-              ✅ Random file upload lol
-            </div>
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-              ✅ Himesh Reshammiya Music CD
-            </div>
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-              ✅ Salman Bhai Fan Club registrations open
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-           
-          </div>
-        </div>
-      ),
-    },
-  ];
+        ),
+      },
+    ];
   return (
-    <div className="w-full">
+    <div className="w-full relative">
+      <div className="bg-primary/50 [filter:blur(100px)] absolute right-0 top-[50%] md:size-64 size-32" />
       <Timeline data={data} />
     </div>
   );

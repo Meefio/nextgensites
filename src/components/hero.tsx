@@ -36,7 +36,7 @@ export function Hero() {
       </div>
       <div className="relative flex-1 animate-fade-in">
         <BorderBeam
-          size={600}
+          size={200}
           anchor={90}
           colorTo="#0000"
           duration={10}
