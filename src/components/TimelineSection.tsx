@@ -4,42 +4,26 @@ import { Timeline } from "@/components/ui/timeline";
 export function TimelineSection() {
    const data = [
       {
-        title: "Kontakt i konsultacja",
+        title: "Kontakt i szczegóły projektu",
         content: (
           <p className="text-muted-foreground">
-            Skontaktuj się z nami przez formularz, telefon lub e-mail, aby przedstawić swoje potrzeby i oczekiwania. Umówimy się na konsultację, aby lepiej poznać Twój projekt.
+            Skontaktuj się z nami przez formularz kontaktowy, telefon lub e-mail, aby przedstawić swoje potrzeby i oczekiwania. Przekaż nam zdjęcia, informacje o kolorystyce, logo oraz sekcjach na których Ci zależy abyśmy mogli lepiej zrozumieć wymagania oraz cele biznesowe.
           </p>
         ),
       },
       {
-        title: "Kwestionariusz projektowy",
+        title: "Wycena i akceptacja kosztów",
         content: (
           <p className="text-muted-foreground">
-            Po rozmowie poprosimy Cię o odpowiedź na kilka pytań, które pomogą nam zrozumieć wymagania i cele biznesowe. Dzięki temu lepiej dopasujemy zakres usług i przygotujemy wycenę.
+            Na podstawie uzyskanych informacji przygotujemy wycenę i harmonogram projektu. Po akceptacji kosztów, przystępujemy do realizacji.
           </p>
         ),
       },
       {
-        title: "Otrzymanie wyceny i akceptacja kosztów",
+        title: "Draft oraz treści na stronę",
         content: (
           <p className="text-muted-foreground">
-            Na podstawie informacji przygotujemy wycenę i harmonogram projektu. Po akceptacji kosztów, przystępujemy do realizacji.
-          </p>
-        ),
-      },
-      {
-        title: "Przygotowanie draftu treści na stronę",
-        content: (
-          <p className="text-muted-foreground">
-            Rozpoczynamy od opracowania treści na stronę, zgodnie z wytycznymi i celem biznesowym. Przedstawimy draft do Twojej akceptacji lub poprawek.
-          </p>
-        ),
-      },
-      {
-        title: "Projekt strony i układ graficzny",
-        content: (
-          <p className="text-muted-foreground">
-            Tworzymy wstępny projekt strony, uwzględniając UX/UI oraz estetykę dopasowaną do Twojej marki. Projekt zostanie przesłany do akceptacji lub ewentualnych poprawek.
+            Przedstawiamy treści na stronę oraz draft Twojej nowej strony internetowej do akceptacji lub poprawek.
           </p>
         ),
       },
@@ -47,7 +31,7 @@ export function TimelineSection() {
         title: "Poprawki i finalizacja",
         content: (
           <p className="text-muted-foreground">
-            Po uwzględnieniu uwag dokonujemy ostatnich poprawek. Po finalnej akceptacji wdrażamy stronę na serwer, a Ty otrzymujesz w pełni funkcjonalny i zoptymalizowany serwis gotowy do działania.
+            Po uwzględnieniu uwag dokonujemy ostatnich poprawek. Po finalnej akceptacji wdrażamy stronę na serwer, konfigurujemy pocztę, dodajemy narzędzia do śledzenia ruchu, a Ty otrzymujesz w pełni funkcjonalny i zoptymalizowany serwis gotowy do działania.
           </p>
         ),
       },
