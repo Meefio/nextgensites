@@ -70,6 +70,7 @@ export function Pricing() {
           checked={!isMonthly}
           onCheckedChange={() => setIsMonthly(!isMonthly)}
           className="data-[state=checked]:bg-primary"
+          aria-label={isMonthly ? "Zmień na opcję jednorazową" : "Zmień na opcję subskrypcyjną"}
         />
         <span className={!isMonthly ? "text-foreground" : "text-muted-foreground"}>Jednorazowo</span>
       </div>

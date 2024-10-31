@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export function CtaSection() {
   return (
-    <section className="container flex flex-col items-center gap-6 py-24 sm:gap-10">
+    <section className="container flex flex-col items-center gap-6 py-24 sm:gap-10 rounded-md border border-border bg-secondary">
       <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl text-balance max-w-xl sm:leading-tight text-center">
       Gotowy na nową stronę, która przyciągnie klientów?
       </h2>
