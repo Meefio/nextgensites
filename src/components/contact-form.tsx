@@ -58,8 +58,18 @@ export function ContactForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Symulacja opóźnienia
-      
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) {
+        throw new Error('Wystąpił błąd podczas wysyłania wiadomości');
+      }
+
       toast({
         title: "Wiadomość wysłana!",
         description: "Dziękujemy za kontakt. Odpowiemy najszybciej jak to możliwe.",
