@@ -1,10 +1,10 @@
-![NextGenSites Logo](./public/nextgensites-logo.png)  # NextGenSites - Project Documentation
+# NextGenSites - Project Documentation
 
 [nextgensites.vercel.app](https://nextgensites.vercel.app)
 After final deployment: [nextgensites.pl](https://nextgensites.pl)
 
 ## 🚀 About
-NextGenSites is a modern platform for creating and managing websites using cutting-edge web technologies.
+NextGenSites is a landing page for a company that offers web development services.
 
 ## 🛠️ Tech Stack
 - **Framework**: Next.js 15 (App Router)

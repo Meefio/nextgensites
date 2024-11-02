@@ -8,7 +8,7 @@ import { BorderBeam } from "@/components/magicui/border-beam";
 
 export function Hero() {
   return (
-    <section className="container flex flex-col items-center gap-10 pb-28 pt-20 sm:gap-14 lg:flex-row">
+    <section className="container flex flex-col items-center gap-10 pb-14 pt-10 md:pb-28 md:pt-20 sm:gap-14 lg:flex-row">
       <div className="flex flex-1 flex-col items-center gap-8 lg:items-start lg:gap-10">
         <div className="inline-flex h-7 items-center justify-between rounded-full border bg-secondary text-secondary-foreground px-3 text-xs transition-all ease-in hover:cursor-pointer hover:bg-white/20 group gap-1 translate-y-[-1rem] animate-fade-in">
           <TextShimmer className="inline-flex items-center justify-center">

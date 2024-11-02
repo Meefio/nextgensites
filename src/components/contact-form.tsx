@@ -89,7 +89,7 @@ export function ContactForm() {
   }
 
   return (
-    <section className="container py-24">
+    <section className="container py-14 md:py-24">
       <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
         <div className="grid gap-16 lg:grid-cols-2 p-8">
           {/* Lewa kolumna z danymi kontaktowymi */}

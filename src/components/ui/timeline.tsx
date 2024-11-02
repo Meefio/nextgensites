@@ -42,7 +42,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
 	return (
 		<section
-			className='relative container flex flex-col items-center gap-6 py-24 md:px-10 max-w-[900px]'
+			className='relative container flex flex-col items-center gap-6 py-14 md:py-24 md:px-10 max-w-[900px]'
 			ref={containerRef}
 		>
          
@@ -59,7 +59,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 			</div>
          
 
-			<div ref={ref} className='relative mx-auto pb-20 overflow-hidden'>
+			<div ref={ref} className='relative mx-auto pb-20 '>
 				{data.map((item, index) => (
 					<div
 						key={index}
