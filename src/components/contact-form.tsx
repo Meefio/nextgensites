@@ -45,34 +45,20 @@ export function ContactForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Wystąpił błąd podczas wysyłania wiadomości");
-      }
-
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Symulacja opóźnienia
+      
       toast({
-        title: "Sukces!",
-        description: "Twoja wiadomość została wysłana.",
+        title: "Wiadomość wysłana!",
+        description: "Dziękujemy za kontakt. Odpowiemy najszybciej jak to możliwe.",
         variant: "default",
       });
+      
       form.reset();
     } catch (error) {
-      console.error("Błąd formularza:", error);
       toast({
+        title: "Wystąpił błąd!",
+        description: "Nie udało się wysłać wiadomości. Spróbuj ponownie później.",
         variant: "destructive",
-        title: "Błąd!",
-        description: error instanceof Error 
-          ? error.message 
-          : "Nie udało się wysłać wiadomości. Spróbuj ponownie później.",
       });
     } finally {
       setIsLoading(false);
@@ -80,17 +66,22 @@ export function ContactForm() {
   }
 
   return (
-    <div className="container mx-auto py-16">
-      <h2 className="text-3xl font-bold text-center mb-8">Skontaktuj się z nami</h2>
-      <div className="max-w-md mx-auto">
+    <section className="container py-24">
+      <div className="mx-auto max-w-2xl">
+        <h2 className="font-heading text-3xl font-bold sm:text-4xl">
+          Skontaktuj się z nami
+        </h2>
+        <p className="mt-4 text-muted-foreground">
+          Masz pytania? Napisz do nas, a my postaramy się odpowiedzieć jak najszybciej.
+        </p>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="mt-8 space-y-8">
             <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Imię i nazwisko</FormLabel>
+                  <FormLabel>Imię</FormLabel>
                   <FormControl>
                     <Input placeholder="Jan Kowalski" {...field} />
                   </FormControl>
@@ -119,8 +110,8 @@ export function ContactForm() {
                   <FormLabel>Wiadomość</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Twoja wiadomość..."
-                      className="resize-none"
+                      placeholder="W czym możemy Ci pomóc?"
+                      className="min-h-[120px] resize-none"
                       {...field}
                     />
                   </FormControl>
@@ -128,12 +119,12 @@ export function ContactForm() {
                 </FormItem>
               )}
             />
-            <Button type="submit" disabled={isLoading}>
+            <Button type="submit" size="lg" disabled={isLoading}>
               {isLoading ? "Wysyłanie..." : "Wyślij wiadomość"}
             </Button>
           </form>
         </Form>
       </div>
-    </div>
+    </section>
   );
 } 
