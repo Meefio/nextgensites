@@ -1,37 +1,118 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![NextGenSites Logo](./public/nextgensites-logo.png)  # NextGenSites - Project Documentation
 
-## Getting Started
+[nextgensites.vercel.app](https://nextgensites.vercel.app)
+After final deployment: [nextgensites.pl](https://nextgensites.pl)
 
-First, run the development server:
+## 🚀 About
+NextGenSites is a modern platform for creating and managing websites using cutting-edge web technologies.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🛠️ Tech Stack
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript
+- **Database**: Supabase
+- **ORM**: Drizzle
+- **Authentication**: NextAuth V5
+- **UI Components**: Shadcn/ui
+- **Styling**: Tailwind CSS
+- **Monorepo**: Turborepo
+- **Monitoring**: Sentry, PostHog
+- **Email**: Resend, React Email
+- **Validation**: Zod
+- **Package Manager**: pnpm
+- **Deployment**: Vercel
+
+## 📁 Project Structure
+```
+/src
+  /app
+    /api
+      /contact
+    /(...routes)
+  /components
+    /ui (shadcn/ui components)
+      button.tsx
+      card.tsx
+      form.tsx
+      input.tsx
+      textarea.tsx
+    contact-form.tsx
+  /hooks
+    use-toast.ts
+  /lib
+    /utils
+  /config
+  /types
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 Project Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Requirements
+- Node.js 18+
+- pnpm 8+
+- Supabase account
+- Vercel account
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Installation
+```bash
+# Install dependencies
+pnpm install
 
-## Learn More
+# Run the development server
+pnpm dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🌟 Core Features
+- Responsive design (mobile-first)
+- Contact forms with validation
+- Toast notification system
+- API integration
+- SEO optimization
+- Accessibility (WCAG)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 Coding Conventions
+- **Components**: PascalCase (e.g., ContactForm)
+- **Hooks**: camelCase with "use" prefix (e.g., useToast)
+- **UI Component Files**: kebab-case
+- **Imports**: Absolute paths (@/components)
+- **Styling**: Tailwind CSS (no inline CSS)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 🔒 Security
+- Zod data validation
+- Secure API Routes
+- Protected endpoints
+- Input sanitization
 
-## Deploy on Vercel
+## 📱 Responsiveness
+- Mobile-first approach
+- Tailwind breakpoints:
+  - sm: 640px
+  - md: 768px
+  - lg: 1024px
+  - xl: 1280px
+  - 2xl: 1536px
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🚀 Deployment
+```bash
+# Build project
+pnpm build
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# nextgensites
+# Deploy to Vercel
+vercel deploy
+```
+
+## 📈 Monitoring and Analytics
+- Sentry for error tracking
+- PostHog for analytics
+- Performance monitoring
+
+## 🤝 Collaboration
+- Conventional Commits
+- Code Review guidelines
+- ESLint and Prettier
+
+## 📞 Contact
+- Email: contact@nextgensites.com
+
+---
+
+© 2024 NextGenSites. All rights reserved.
