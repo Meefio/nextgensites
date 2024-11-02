@@ -7,35 +7,36 @@ export function SocialProof() {
          </h2>
          <div className="mt-6">
            <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-16 [&_path]:fill-white">
-             <li>
+             <li className="hover:scale-90 duration-300 transition-all">
                <img
                  alt="Netflix"
                  src="/images/netflix-3.svg"
                  className="h-8 w-28 px-2 brightness-0 invert"
                />
              </li>
-             <li>
+             
+             <li className="hover:scale-90 duration-300 transition-all">
                <img
                  alt="Nike"
                  src="/images/nike.svg"
                  className="h-8 w-28 px-2 brightness-0 invert"
                />
              </li>
-             <li>
+             <li className="hover:scale-90 duration-300 transition-all">
                <img
                  alt="OpenAI"
                  src="/images/openai.svg"
                  className="h-8 w-28 px-2 brightness-0 invert"
                />
              </li>
-             <li>
+             <li className="hover:scale-90 duration-300 transition-all">
                <img
                  alt="Tiktok"
                  src="/images/tiktok.svg"
                  className="h-8 w-28 px-2 brightness-0 invert"
                />
              </li>
-             <li>
+             <li className="hover:scale-90 duration-300 transition-all">
                <img
                  alt="twitch"
                  src="/images/twitch.svg"

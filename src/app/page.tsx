@@ -9,6 +9,7 @@ import { BlogSection } from "@/components/blog-section";
 import { TimelineSection } from "@/components/TimelineSection";
 import { CtaSection } from "@/components/cta";
 import { SocialProof } from "@/components/SocialProof";
+import { ContactForm } from "@/components/contact-form";
 
 export default function HomePage() {
   return (
@@ -22,6 +23,7 @@ export default function HomePage() {
       <Pricing />
       <Testimonials />
       <Faq />
+      <ContactForm />
       <Footer />
       <BlogSection />
     </>
