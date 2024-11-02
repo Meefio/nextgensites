@@ -17,7 +17,7 @@ export function Header() {
             fill="currentColor"
           />
         </svg>
-        <span className="font-heading text-xl font-bold">NextGen Sites</span>
+        <span className="font-heading text-xl font-bold whitespace-nowrap">NextGen Sites</span>
       </Link>
       <div className="flex items-center gap-10">
         <nav className="hidden items-center gap-10 md:flex justify-end">
