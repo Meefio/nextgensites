@@ -55,9 +55,9 @@ export function ContactForm() {
     },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsLoading(true);
+  const handleSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
+      setIsLoading(true);
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -78,15 +78,16 @@ export function ContactForm() {
       
       form.reset();
     } catch (error) {
+      console.error(error);
       toast({
-        title: "Wystąpił błąd!",
-        description: "Nie udało się wysłać wiadomości. Spróbuj ponownie później.",
+        title: "Błąd",
+        description: "Wystąpił problem podczas wysyłania formularza. Spróbuj ponownie później.",
         variant: "destructive",
       });
     } finally {
       setIsLoading(false);
     }
-  }
+  };
 
   return (
     <section id="kontakt" className="container flex flex-col items-center gap-6 py-14 md:py-24 sm:gap-7 scroll-mt-header">
@@ -181,7 +182,7 @@ export function ContactForm() {
           {/* Prawa kolumna z formularzem */}
           <div className="lg:border-l lg:pl-6 xl:pl-16">
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 md:space-y-8">
+              <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4 md:space-y-8">
                 <FormField
                   control={form.control}
                   name="name"
