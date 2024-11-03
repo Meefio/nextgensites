@@ -29,7 +29,7 @@ export default function HomePage() {
         <ContactForm />
       </main>
       <div className="relative z-10 bg-background">
-        <BlogSection />
+        {/* <BlogSection /> */}
         <Footer />
       </div>
     </div>

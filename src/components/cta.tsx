@@ -69,7 +69,7 @@ export function CtaSection() {
       </p>
       <div ref={buttonRef}>
         <Button size="lg" asChild variant="default" className="relative cursor-pointer border-border">
-          <Link href="#">Wycena w 2 minuty</Link>
+          <Link href="#kontakt">Skontaktuj się z nami</Link>
         </Button>
       </div>
     </section>

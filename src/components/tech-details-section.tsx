@@ -29,7 +29,7 @@ import { LinkPreview } from "@/components/ui/link-preview";
 
 export const TechDetailsSection = () => {
   return (
-    <section className="relative py-24 bg-background">
+    <section id="technologie" className="relative py-24 bg-background scroll-mt-header">
       <div className="container">
         {/* Nagłówek sekcji */}
         <div className="flex flex-col gap-3 animate-fade-in">

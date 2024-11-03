@@ -54,7 +54,7 @@ export function Pricing() {
   ]
 
   return (
-    <section className="container flex flex-col items-center gap-6 py-24 sm:gap-7">
+    <section id="cennik" className="container flex flex-col items-center gap-6 py-14 md:py-24 sm:gap-7 scroll-mt-header">
       <div className="flex flex-col gap-3 animate-fade-in">
         <span className="font-bold uppercase text-primary text-center">Cennik</span>
         <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl text-balance text-center">

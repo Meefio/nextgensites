@@ -22,33 +22,33 @@ export function Header() {
       <div className="flex items-center gap-8">
         <nav className="hidden items-center gap-8 md:flex justify-end">
           <Link
-            href="/about"
+            href="#features"
             className="flex cursor-pointer items-center text-lg font-medium text-muted-foreground transition-colors hover:text-foreground sm:text-sm"
           >
-            Dlaczego my?
+            Korzyści
           </Link>
           <Link
-            href="/docs"
+            href="#technologie"
             className="flex cursor-pointer items-center text-lg font-medium text-muted-foreground transition-colors hover:text-foreground sm:text-sm"
           >
-            Docs
+            Technologie
           </Link>
           <Link
-            href="/blog"
+            href="#cennik"
             className="flex cursor-pointer items-center text-lg font-medium text-muted-foreground transition-colors hover:text-foreground sm:text-sm"
           >
-            Blog
+            Cennik
           </Link>
           <Link
-            href="/pricing"
+            href="#kontakt"
             className="flex cursor-pointer items-center text-lg font-medium text-muted-foreground transition-colors hover:text-foreground sm:text-sm"
           >
-            Pricing
+            Kontakt
           </Link>
         </nav>
         <div className="hidden items-center gap-2 md:flex">
           <Button size="sm" asChild variant="outline">
-            <Link href="#" className="cursor-pointer">
+            <Link href="#kontakt" className="cursor-pointer">
               Uzyskaj darmową wycenę
             </Link>
           </Button>
@@ -58,31 +58,37 @@ export function Header() {
         <div className="rounded-b-lg bg-background py-4 container text-foreground shadow-xl">
           <nav className="flex flex-col gap-1 pt-2">
             <Link
-              href="/about"
+              href="#features"
               className="flex w-full cursor-pointer items-center rounded-md p-2 font-medium text-muted-foreground hover:text-foreground"
             >
-              About
+              Korzyści
             </Link>
             <Link
-              href="/docs"
+              href="#proces"
               className="flex w-full cursor-pointer items-center rounded-md p-2 font-medium text-muted-foreground hover:text-foreground"
             >
-              Docs
+              Proces współpracy
             </Link>
             <Link
-              href="/blog"
+              href="#technologie"
               className="flex w-full cursor-pointer items-center rounded-md p-2 font-medium text-muted-foreground hover:text-foreground"
             >
-              Blog
+              Technologie
             </Link>
             <Link
-              href="/pricing"
+              href="#cennik"
               className="flex w-full cursor-pointer items-center rounded-md p-2 font-medium text-muted-foreground hover:text-foreground"
             >
-              Pricing
+              Cennik
+            </Link>
+            <Link
+              href="#kontakt"
+              className="flex w-full cursor-pointer items-center rounded-md p-2 font-medium text-muted-foreground hover:text-foreground"
+            >
+              Kontakt
             </Link>
             <Button size="lg" asChild className="mt-2 w-full">
-              <Link href="#" className="cursor-pointer">
+              <Link href="#kontakt" className="cursor-pointer">
                 Uzyskaj darmową wycenę
               </Link>
             </Button>

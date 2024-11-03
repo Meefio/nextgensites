@@ -48,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pl">
+    <html lang="pl" className="scroll-smooth">
       <body
         className={cn(
           "min-h-screen font-sans antialiased max-w-100vw overflow-x-hidden",

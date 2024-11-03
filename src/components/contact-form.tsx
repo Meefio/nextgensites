@@ -89,7 +89,7 @@ export function ContactForm() {
   }
 
   return (
-    <section className="w-full px-2 py-8 md:container md:py-24">
+    <section id="kontakt" className="container flex flex-col items-center gap-6 py-14 md:py-24 sm:gap-7 scroll-mt-header">
       <div className="rounded-lg border bg-card text-card-foreground shadow-sm max-w-full overflow-hidden">
         <div className="grid gap-6 p-3 md:gap-16 md:p-8 lg:grid-cols-2">
           {/* Lewa kolumna z danymi kontaktowymi */}

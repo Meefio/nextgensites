@@ -1,2 +1,28 @@
-node_modules
+# Node modules
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Log files
+*.log
+yarn-debug.log*
+yarn-error.log*
+npm-debug.log*
+pnpm-debug.log*
+
+# Runtime files
+.env.local
+.env.*.local
 .env
+
+# Cache directories
+.cache/
+.vscode/
+.idea/
+dist/
+
+# System files
+.DS_Store
+Thumbs.db
