@@ -10,54 +10,49 @@ interface LinkPreviewProps {
   className?: string;
 }
 
-const PREVIEW_IMAGES = {
+const PREVIEW_IMAGES: Record<string, string> = {
   'nextjs.org': '/images/previews/nextjs-preview.png',
   'supabase.com': '/images/previews/supabase-preview.png',
   'posthog.com': '/images/previews/posthog-preview.png',
   'sentry.io': '/images/previews/sentry-preview.png',
+  'strapi.io': '/images/previews/strapi-preview.png',
 } as const;
 
 export function LinkPreview({ url, children, className }: LinkPreviewProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const linkRef = useRef<HTMLAnchorElement>(null);
   const [previewImage, setPreviewImage] = useState<string>('');
+  const linkRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    const domain = new URL(url).hostname;
-    const image = PREVIEW_IMAGES[domain as keyof typeof PREVIEW_IMAGES];
-    console.log('Domain:', domain);
-    console.log('Preview image:', image);
-    if (image) {
-      setPreviewImage(image);
+    try {
+      const domain = new URL(url).hostname;
+      const image = PREVIEW_IMAGES[domain];
+      if (image) {
+        setPreviewImage(image);
+      }
+    } catch (error) {
+      console.error('Error parsing URL:', error);
     }
   }, [url]);
 
-  useEffect(() => {
-    const updatePosition = () => {
-      if (linkRef.current) {
-        const rect = linkRef.current.getBoundingClientRect();
-        setPosition({
-          x: rect.left,
-          y: rect.bottom + window.scrollY + 5,
-        });
-      }
-    };
+  const handleMouseEnter = () => {
+    console.log('Mouse enter');
+    setIsHovered(true);
+  };
 
-    updatePosition();
-    window.addEventListener("resize", updatePosition);
-    window.addEventListener("scroll", updatePosition);
-
-    return () => {
-      window.removeEventListener("resize", updatePosition);
-      window.removeEventListener("scroll", updatePosition);
-    };
-  }, []);
+  const handleMouseLeave = () => {
+    console.log('Mouse leave');
+    setIsHovered(false);
+  };
 
   return (
-    <div className="relative inline-block">
+    <span
+      ref={linkRef}
+      className="relative inline-block"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <a
-        ref={linkRef}
         href={url}
         target="_blank"
         rel="noopener noreferrer"
@@ -65,38 +60,39 @@ export function LinkPreview({ url, children, className }: LinkPreviewProps) {
           "text-primary hover:underline cursor-pointer",
           className
         )}
-        onMouseEnter={() => {
-          console.log('Mouse enter');
-          setIsHovered(true);
-        }}
-        onMouseLeave={() => {
-          console.log('Mouse leave');
-          setIsHovered(false);
-        }}
       >
         {children}
       </a>
+      
       {isHovered && previewImage && (
-        <div
-          className="fixed z-50 w-[300px] md:w-[400px] animate-in fade-in slide-in-from-top-1 duration-200"
-          style={{ left: position.x, top: position.y }}
+        <span 
+          className="absolute z-50"
+          style={{
+            left: '50%',
+            transform: 'translateX(-50%)',
+            top: '100%',
+            marginTop: '0.5rem',
+          }}
         >
-          <div className="rounded-lg border bg-card p-4 shadow-lg">
-            <div className="aspect-[1200/630] relative mb-3 overflow-hidden rounded-md">
-              <Image
-                src={previewImage}
-                alt={`Preview of ${url}`}
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-            <p className="text-sm text-muted-foreground truncate">
-              {url.replace(/^https?:\/\//, '')}
-            </p>
-          </div>
-        </div>
+          <span className="block w-[300px] animate-in fade-in zoom-in duration-200">
+            <span className="block rounded-lg border bg-background shadow-lg p-4">
+              <span className="block relative aspect-[1200/630] w-full overflow-hidden rounded-md bg-muted">
+                <Image
+                  src={previewImage}
+                  alt={`Preview of ${url}`}
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="300px"
+                />
+              </span>
+              <span className="block mt-2 text-sm text-muted-foreground truncate">
+                {url.replace(/^https?:\/\//, '')}
+              </span>
+            </span>
+          </span>
+        </span>
       )}
-    </div>
+    </span>
   );
 } 
