@@ -19,8 +19,8 @@ export function Header() {
         </svg>
         <span className="font-heading text-xl font-bold whitespace-nowrap">NextGen Sites</span>
       </Link>
-      <div className="flex items-center gap-10">
-        <nav className="hidden items-center gap-10 md:flex justify-end">
+      <div className="flex items-center gap-8">
+        <nav className="hidden items-center gap-8 md:flex justify-end">
           <Link
             href="/about"
             className="flex cursor-pointer items-center text-lg font-medium text-muted-foreground transition-colors hover:text-foreground sm:text-sm"

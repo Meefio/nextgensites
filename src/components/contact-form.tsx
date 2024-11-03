@@ -89,23 +89,23 @@ export function ContactForm() {
   }
 
   return (
-    <section className="container py-14 md:py-24">
-      <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
-        <div className="grid gap-16 lg:grid-cols-2 p-8">
+    <section className="w-full px-2 py-8 md:container md:py-24">
+      <div className="rounded-lg border bg-card text-card-foreground shadow-sm max-w-full overflow-hidden">
+        <div className="grid gap-6 p-3 md:gap-16 md:p-8 lg:grid-cols-2">
           {/* Lewa kolumna z danymi kontaktowymi */}
-          <div className="space-y-8">
+          <div className="space-y-4 md:space-y-8">
             <div>
-              <h2 className="font-heading text-3xl font-bold sm:text-4xl">
+              <h2 className="font-heading text-2xl font-bold md:text-3xl text-center md:text-left">
                 Skontaktuj się z nami
               </h2>
-              <p className="mt-4 text-muted-foreground">
+              <p className="mt-2 text-sm text-muted-foreground md:text-base md:mt-4 text-center md:text-left">
                 Masz pytania? Napisz do nas, a my postaramy się odpowiedzieć jak najszybciej.
               </p>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               <Card 
-                className="p-4 transition-colors hover:bg-muted cursor-pointer"
+                className="p-3 md:p-4 transition-colors hover:bg-muted cursor-pointer"
                 onClick={() => window.location.href = `tel:${phone.replace(/\s/g, '')}`}
                 tabIndex={0}
                 role="button"
@@ -116,9 +116,9 @@ export function ContactForm() {
                 }}
               >
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
-                    <div className="rounded-lg bg-primary/10 p-3">
-                      <Phone className="h-5 w-5 text-primary" />
+                  <div className="flex items-center space-x-2 md:space-x-4">
+                    <div className="rounded-lg bg-primary/10 p-2 md:p-3">
+                      <Phone className="h-4 w-4 md:h-5 md:w-5 text-primary" />
                     </div>
                     <div>
                       <p className="font-medium">Telefon</p>
@@ -141,7 +141,7 @@ export function ContactForm() {
               </Card>
 
               <Card 
-                className="p-4 transition-colors hover:bg-muted cursor-pointer"
+                className="p-3 md:p-4 transition-colors hover:bg-muted cursor-pointer"
                 onClick={() => window.location.href = `mailto:${email}`}
                 tabIndex={0}
                 role="button"
@@ -152,9 +152,9 @@ export function ContactForm() {
                 }}
               >
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
-                    <div className="rounded-lg bg-primary/10 p-3">
-                      <Mail className="h-5 w-5 text-primary" />
+                  <div className="flex items-center space-x-2 md:space-x-4">
+                    <div className="rounded-lg bg-primary/10 p-2 md:p-3">
+                      <Mail className="h-4 w-4 md:h-5 md:w-5 text-primary" />
                     </div>
                     <div>
                       <p className="font-medium">Email</p>
@@ -179,9 +179,9 @@ export function ContactForm() {
           </div>
 
           {/* Prawa kolumna z formularzem */}
-          <div className="lg:border-l lg:pl-16">
+          <div className="lg:border-l lg:pl-6 xl:pl-16">
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 md:space-y-8">
                 <FormField
                   control={form.control}
                   name="name"
@@ -230,7 +230,7 @@ export function ContactForm() {
                     type="submit" 
                     size="lg" 
                     disabled={isLoading}
-                    className="w-full sm:w-auto"
+                    className="w-full sm:w-auto px-3 md:px-6"
                   >
                     {isLoading ? "Wysyłanie..." : "Wyślij wiadomość"}
                   </Button>
