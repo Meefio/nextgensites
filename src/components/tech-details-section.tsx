@@ -10,6 +10,19 @@ import {
   Server, 
   Globe,
   FileEdit,
+  Lock,
+  Database,
+  LineChart,
+  ArrowUpRight,
+  SplitSquareVertical,
+  AlertCircle,
+  Activity,
+  Bell,
+  Sparkles,
+  Smartphone,
+  Eye,
+  MousePointer,
+  Users,
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { LinkPreview } from "@/components/ui/link-preview";
@@ -19,34 +32,25 @@ export const TechDetailsSection = () => {
     <section className="relative py-24 bg-background">
       <div className="container">
         {/* Nagłówek sekcji */}
-        <div className="flex items-center gap-4 mb-16">
-          <div className="rounded-full bg-primary/10 p-3">
-            <Rocket className="h-6 w-6 text-primary" />
-          </div>
-          <div>
-            <h2 className="text-3xl font-semibold mb-2">
-              Poznaj techniczne szczegóły
-            </h2>
-            <p className="text-muted-foreground">
-              Odkryj, dlaczego nasze rozwiązania wyprzedzają konkurencję
-            </p>
-          </div>
+        <div className="flex flex-col gap-3 animate-fade-in">
+          <span className="font-bold uppercase text-primary text-center">Technologie</span>
+          <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl text-balance text-center">
+            Poznaj techniczne szczegóły
+          </h2>
+          <p className="text-lg text-muted-foreground text-balance max-w-lg text-center mx-auto">
+            Odkryj, dlaczego nasze rozwiązania wyprzedzają konkurencję
+          </p>
         </div>
 
         {/* Sekcje techniczne */}
-        <div className="space-y-24">
+        <div className="space-y-24 mt-7">
           {/* Sekcja 1: Next.js */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex items-start gap-4">
-              <div className="rounded-full bg-primary/10 p-3">
+          <motion.div className="w-full">
+            <div className="flex items-start gap-4 w-full">
+              <div className="rounded-full bg-primary/10 p-3 shrink-0">
                 <Zap className="h-6 w-6 text-primary" />
               </div>
-              <div>
+              <div className="w-full">
                 <h3 className="text-xl font-semibold mb-2">
                   Next.js - Framework przyszłości
                 </h3>
@@ -58,118 +62,104 @@ export const TechDetailsSection = () => {
                   {" "} - technologię, której używają giganci tacy jak Netflix czy TikTok.
                 </span>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
                   <Card className="p-6">
                     <h4 className="font-semibold mb-3 flex items-center gap-2">
-                      <Server className="h-4 w-4 text-primary" />
-                      Server Components
+                      <Zap className="h-4 w-4 text-primary" />
+                      Wydajność
                     </h4>
-                    <p className="text-sm text-muted-foreground">
-                      Strony ładują się błyskawicznie dzięki renderowaniu po stronie serwera.
-                    </p>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      <li className="flex items-center gap-2">
+                        <Server className="h-4 w-4 text-primary" />
+                        Błyskawiczne ładowanie
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Globe className="h-4 w-4 text-primary" />
+                        Optymalizacja SEO
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Activity className="h-4 w-4 text-primary" />
+                        Płynne działanie
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Shield className="h-4 w-4 text-primary" />
+                        Stabilna praca
+                      </li>
+                    </ul>
                   </Card>
                   
                   <Card className="p-6">
                     <h4 className="font-semibold mb-3 flex items-center gap-2">
                       <Globe className="h-4 w-4 text-primary" />
-                      Edge Runtime
+                      Zasięg
                     </h4>
-                    <p className="text-sm text-muted-foreground">
-                      Globalna infrastruktura zapewnia szybki dostęp z każdego miejsca na świecie.
-                    </p>
-                  </Card>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Sekcja 2: Supabase */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex items-start gap-4">
-              <div className="rounded-full bg-primary/10 p-3">
-                <Shield className="h-6 w-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">
-                  Supabase - Nowoczesna baza danych
-                </h3>
-                <span className="text-muted-foreground mb-4 block">
-                  <LinkPreview url="https://supabase.com">
-                    Supabase
-                  </LinkPreview>
-                  {" "} zapewnia bezpieczne przechowywanie danych i błyskawiczny dostęp.
-                </span>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Card className="p-6">
-                    <h4 className="font-semibold mb-3">Bezpieczeństwo</h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li>• Automatyczne backupy</li>
-                      <li>• Szyfrowanie SSL/TLS</li>
-                      <li>• Row Level Security</li>
+                      <li className="flex items-center gap-2">
+                        <ArrowUpRight className="h-4 w-4 text-primary" />
+                        Globalna dostępność
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <LineChart className="h-4 w-4 text-primary" />
+                        Szybkość działania
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Database className="h-4 w-4 text-primary" />
+                        Niezawodność
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Bell className="h-4 w-4 text-primary" />
+                        Stałe aktualizacje
+                      </li>
                     </ul>
                   </Card>
-                  
+
                   <Card className="p-6">
-                    <h4 className="font-semibold mb-3">Wydajność</h4>
+                    <h4 className="font-semibold mb-3 flex items-center gap-2">
+                      <Sparkles className="h-4 w-4 text-primary" />
+                      Innowacje
+                    </h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li>• Real-time subskrypcje</li>
-                      <li>• Edge Functions</li>
-                      <li>• Globalna replikacja</li>
+                      <li className="flex items-center gap-2">
+                        <FileEdit className="h-4 w-4 text-primary" />
+                        Łatwa aktualizacja
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <SplitSquareVertical className="h-4 w-4 text-primary" />
+                        Nowoczesny design
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <AlertCircle className="h-4 w-4 text-primary" />
+                        Bezpieczeństwo
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <BarChart className="h-4 w-4 text-primary" />
+                        Analityka
+                      </li>
                     </ul>
                   </Card>
-                </div>
-              </div>
-            </div>
-          </motion.div>
 
-          {/* Sekcja 3: Monitoring */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex items-start gap-4">
-              <div className="rounded-full bg-primary/10 p-3">
-                <BarChart className="h-6 w-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">
-                  Monitoring i analityka
-                </h3>
-                <span className="text-muted-foreground mb-4 block">
-                  <LinkPreview url="https://posthog.com">
-                    PostHog
-                  </LinkPreview>
-                  {" "} i {" "}
-                  <LinkPreview url="https://sentry.io">
-                    Sentry
-                  </LinkPreview>
-                  {" "} zapewniają pełną kontrolę nad działaniem strony.
-                </span>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <Card className="p-6">
-                    <h4 className="font-semibold mb-3">PostHog</h4>
+                    <h4 className="font-semibold mb-3 flex items-center gap-2">
+                      <Smartphone className="h-4 w-4 text-primary" />
+                      Dostępność
+                    </h4>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li>• Analiza zachowań użytkowników</li>
-                      <li>• Ścieżki konwersji</li>
-                      <li>• A/B testy</li>
-                    </ul>
-                  </Card>
-                  
-                  <Card className="p-6">
-                    <h4 className="font-semibold mb-3">Sentry</h4>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li>• Monitoring błędów</li>
-                      <li>• Performance monitoring</li>
-                      <li>• Real-time alerty</li>
+                      <li className="flex items-center gap-2">
+                        <Smartphone className="h-4 w-4 text-primary" />
+                        Responsywny design
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Eye className="h-4 w-4 text-primary" />
+                        Przyjazny interfejs
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <MousePointer className="h-4 w-4 text-primary" />
+                        Intuicyjna obsługa
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Users className="h-4 w-4 text-primary" />
+                        Dla każdego użytkownika
+                      </li>
                     </ul>
                   </Card>
                 </div>
@@ -177,81 +167,179 @@ export const TechDetailsSection = () => {
             </div>
           </motion.div>
 
-          {/* Sekcja 4: CMS */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex items-start gap-4">
-              <div className="rounded-full bg-primary/10 p-3">
-                <FileEdit className="h-6 w-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">
-                  Strapi - System zarządzania treścią
-                </h3>
-                <span className="text-muted-foreground mb-4 block">
-                  <LinkPreview url="https://strapi.io">
-                    Strapi
-                  </LinkPreview>
-                  {" "} pozwala na łatwe zarządzanie treścią bez wiedzy technicznej.
-                </span>
+          {/* Sekcja 2: Supabase i PostHog */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-24 w-full">
+            {/* Supabase */}
+            <motion.div>
+              <div className="flex items-start gap-4">
+                <div className="rounded-full bg-primary/10 p-3">
+                  <Database className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">
+                    Supabase - Nowoczesna baza danych
+                  </h3>
+                  <span className="text-muted-foreground mb-4 block">
+                    <LinkPreview url="https://supabase.com">
+                      Supabase
+                    </LinkPreview>
+                    {" "} zapewnia bezpieczne przechowywanie danych i błyskawiczny dostęp.
+                  </span>
 
-                <div className="relative mt-8 rounded-xl border bg-gradient-to-b from-background to-background/50 p-6">
-                  <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-primary/10 rounded-xl" />
-                  <h4 className="relative text-lg font-semibold mb-4">Dlaczego Strapi CMS?</h4>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <Card className="p-6 bg-background/50">
-                      <h5 className="font-medium text-primary mb-3">Dla właściciela strony</h5>
-                      <ul className="space-y-2 text-sm">
-                        <li className="flex items-center gap-2">
-                          <div className="size-1.5 rounded-full bg-primary" />
-                          Intuicyjny panel administracyjny
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <div className="size-1.5 rounded-full bg-primary" />
-                          Łatwa edycja treści bez wiedzy technicznej
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <div className="size-1.5 rounded-full bg-primary" />
-                          Zarządzanie mediami (zdjęcia, pliki)
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <div className="size-1.5 rounded-full bg-primary" />
-                          Darmowy dla podstawowych zastosowań
-                        </li>
-                      </ul>
-                    </Card>
-
-                    <Card className="p-6 bg-background/50">
-                      <h5 className="font-medium text-primary mb-3">Dla developera</h5>
-                      <ul className="space-y-2 text-sm">
-                        <li className="flex items-center gap-2">
-                          <div className="size-1.5 rounded-full bg-primary" />
-                          Pełna kontrola nad strukturą danych
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <div className="size-1.5 rounded-full bg-primary" />
-                          REST API i GraphQL
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <div className="size-1.5 rounded-full bg-primary" />
-                          Łatwa integracja z Next.js
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <div className="size-1.5 rounded-full bg-primary" />
-                          Rozbudowane możliwości rozszerzeń
-                        </li>
-                      </ul>
-                    </Card>
-                  </div>
+                  <Card className="p-6">
+                    <h4 className="font-semibold mb-3">Bezpieczeństwo i wydajność</h4>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      <li className="flex items-center gap-2">
+                        <Shield className="h-4 w-4 text-primary" />
+                        Automatyczne backupy
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Lock className="h-4 w-4 text-primary" />
+                        Szyfrowanie SSL/TLS
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Database className="h-4 w-4 text-primary" />
+                        Row Level Security
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <ArrowUpRight className="h-4 w-4 text-primary" />
+                        Real-time subskrypcje
+                      </li>
+                    </ul>
+                  </Card>
                 </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+
+            {/* PostHog */}
+            <motion.div>
+              <div className="flex items-start gap-4">
+                <div className="rounded-full bg-primary/10 p-3">
+                  <LineChart className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">
+                    PostHog - Analiza użytkowników
+                  </h3>
+                  <span className="text-muted-foreground mb-4 block">
+                    <LinkPreview url="https://posthog.com">
+                      PostHog
+                    </LinkPreview>
+                    {" "} dostarcza szczegółowych informacji o zachowaniu użytkowników na stronie.
+                  </span>
+
+                  <Card className="p-6">
+                    <h4 className="font-semibold mb-3">Kluczowe funkcje</h4>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      <li className="flex items-center gap-2">
+                        <LineChart className="h-4 w-4 text-primary" />
+                        Analiza zachowań użytkowników
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <ArrowUpRight className="h-4 w-4 text-primary" />
+                        Ścieżki konwersji
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <SplitSquareVertical className="h-4 w-4 text-primary" />
+                        A/B testy
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Activity className="h-4 w-4 text-primary" />
+                        Heatmapy i nagrania sesji
+                      </li>
+                    </ul>
+                  </Card>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Sekcja 3: Strapi i Sentry */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-24 w-full">
+            {/* Strapi */}
+            <motion.div>
+              <div className="flex items-start gap-4">
+                <div className="rounded-full bg-primary/10 p-3">
+                  <FileEdit className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">
+                    System zarządzania treścią
+                  </h3>
+                  <span className="text-muted-foreground mb-4 block">
+                    <LinkPreview url="https://strapi.io">
+                      Strapi
+                    </LinkPreview>
+                    {" "} umożliwia samodzielną aktualizację treści na stronie bez pomocy programisty.
+                  </span>
+
+                  <Card className="p-6">
+                    <h4 className="font-semibold mb-3">Zarządzanie treścią</h4>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      <li className="flex items-center gap-2">
+                        <FileEdit className="h-4 w-4 text-primary" />
+                        Intuicyjny panel administracyjny
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Globe className="h-4 w-4 text-primary" />
+                        Edycja tekstów i zdjęć
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Server className="h-4 w-4 text-primary" />
+                        Podgląd zmian na żywo
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Shield className="h-4 w-4 text-primary" />
+                        Historia modyfikacji
+                      </li>
+                    </ul>
+                  </Card>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Sentry */}
+            <motion.div>
+              <div className="flex items-start gap-4">
+                <div className="rounded-full bg-primary/10 p-3">
+                  <AlertCircle className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">
+                    Sentry - Monitoring błędów
+                  </h3>
+                  <span className="text-muted-foreground mb-4 block">
+                    <LinkPreview url="https://sentry.io">
+                      Sentry
+                    </LinkPreview>
+                    {" "} zapewnia stabilność i wydajność aplikacji w czasie rzeczywistym.
+                  </span>
+
+                  <Card className="p-6">
+                    <h4 className="font-semibold mb-3">Monitorowanie</h4>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      <li className="flex items-center gap-2">
+                        <AlertCircle className="h-4 w-4 text-primary" />
+                        Monitoring błędów
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Activity className="h-4 w-4 text-primary" />
+                        Performance monitoring
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Bell className="h-4 w-4 text-primary" />
+                        Real-time alerty
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <BarChart className="h-4 w-4 text-primary" />
+                        Diagnostyka problemów
+                      </li>
+                    </ul>
+                  </Card>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
