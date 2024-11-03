@@ -21,12 +21,12 @@ export default function HomePage() {
         <SocialProof />
         <Features />
         <TimelineSection />
+        <TechDetailsSection />
         <CtaSection />
         <Pricing />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <Faq />
         <ContactForm />
-        <TechDetailsSection />
       </main>
       <div className="relative z-10 bg-background">
         <BlogSection />

@@ -264,7 +264,7 @@ export const TechDetailsSection = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold mb-2">
-                    System zarządzania treścią
+                    Strapi - System zarządzania treścią
                   </h3>
                   <span className="text-muted-foreground mb-4 block">
                     <LinkPreview url="https://strapi.io">
