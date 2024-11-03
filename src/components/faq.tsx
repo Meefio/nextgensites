@@ -17,60 +17,105 @@ export function Faq() {
           Jeśli masz jakieś dodatkowe pytania, napisz do nas!
         </p>
       </div>
-      <Accordion type="single" collapsible className="mt-6 w-full divide-y max-w-3xl">
-        <AccordionItem value="item-0" className="border-b-0">
-          <AccordionTrigger className="py-6 text-left text-lg hover:no-underline">
-            Dlaczego model subskrypcyjny?
-          </AccordionTrigger>
-          <AccordionContent className="text-lg text-muted-foreground">
-            Wiemy, że otwarcie nowego biznesu wiąże się z wieloma ryzykami, a wysokie koszty
-            stworzenia strony internetowej mogą być obciążeniem, zwłaszcza gdy firma nie generuje
-            jeszcze przychodów. Dlatego wychodzimy naprzeciw przedsiębiorcom, oferując możliwość
-            miesięcznej opłaty, która nie nadwyręży Twojego budżetu i pozwoli Ci inwestować w inne
-            obszary w celu szybszego rozwoju firmy.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-1" className="border-b-0">
-          <AccordionTrigger className="py-6 text-left text-lg hover:no-underline">
-            Ile czasu zajmuje stworzenie nowej strony?
-          </AccordionTrigger>
-          <AccordionContent className="text-lg text-muted-foreground">
-            Przybliżony czas realizacji zależy od skomplikowania projektu. Zazwyczaj jest to od
-            kilku dni do kilku tygodni.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-2" className="border-b-0">
-          <AccordionTrigger className="py-6 text-left text-lg hover:no-underline">
-            Dlaczego miałbym skorzystać z waszych usług a nie konkurencji?
-          </AccordionTrigger>
-          <AccordionContent className="text-lg text-muted-foreground">
-            W przeciwieństwie do konkurencji, która w większości tworzy strony internetowe na
-            przestarzałych technologiach jak WordPress - Elementor, nasze rozwiązanie oparte na
-            Next.js pozwala na serwerowe renderowanie stron, co zapewnia lepszą szybkość i
-            wydajność. Otrzymujesz gotowy, zoptymalizowany produkt, który ładuje się błyskawicznie,
-            jest przyjazny dla SEO i dostarcza lepsze wrażenia użytkownikom – co wyróżnia nas na tle
-            konkurencji.”
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-3" className="border-b-0">
-          <AccordionTrigger className="py-6 text-left text-lg hover:no-underline">
-            Czy strona będzie responsywna i dobrze wyglądała na urządzeniach mobilnych?
-          </AccordionTrigger>
-          <AccordionContent className="text-lg text-muted-foreground">
-            Tak, wszystkie nasze strony są w pełni responsywne, co oznacza, że będą doskonale
-            wyglądać na komputerach, tabletach i smartfonach.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-4" className="border-b-0">
-          <AccordionTrigger className="py-6 text-left text-lg hover:no-underline">
-            Will the exported website look exactly like the preview?
-          </AccordionTrigger>
-          <AccordionContent className="text-lg text-muted-foreground">
-            Yes, the exported website will look exactly like you see in the editor and in the
-            preview.
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+      
+      <div className="mt-6 w-full grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl">
+        <div className="rounded-lg border bg-card p-6 shadow-sm h-fit">
+          <Accordion type="single" collapsible className="space-y-4">
+            <AccordionItem value="item-0">
+              <AccordionTrigger className="py-4 text-left text-lg hover:no-underline">
+                Co zawiera cena strony internetowej?
+              </AccordionTrigger>
+              <AccordionContent className="text-lg text-muted-foreground pt-2 pb-4">
+                W cenie strony otrzymujesz kompleksową usługę, która obejmuje: projekt i wdrożenie strony, 
+                hosting i domenę, certyfikat SSL, optymalizację pod SEO, responsywny design, integrację z 
+                Google Analytics, podstawowe wsparcie techniczne oraz politykę RODO i cookies. W przypadku 
+                wyższych pakietów dodatkowo oferujemy system CMS do samodzielnej edycji treści, blog, 
+                monitoring wydajności oraz zaawansowaną analitykę.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-1">
+              <AccordionTrigger className="py-4 text-left text-lg hover:no-underline">
+                Dlaczego model subskrypcyjny jest korzystny?
+              </AccordionTrigger>
+              <AccordionContent className="text-lg text-muted-foreground pt-2 pb-4">
+                Model subskrypcyjny pozwala na rozpoczęcie działalności online bez dużych kosztów początkowych. 
+                Miesięczna opłata obejmuje nie tylko hosting, ale także bieżące wsparcie techniczne, 
+                aktualizacje bezpieczeństwa i możliwość rozwoju strony wraz z rozwojem Twojego biznesu. 
+                To elastyczne rozwiązanie, które możesz dostosować do swoich potrzeb i budżetu.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2">
+              <AccordionTrigger className="py-4 text-left text-lg hover:no-underline">
+                Ile czasu zajmuje stworzenie strony?
+              </AccordionTrigger>
+              <AccordionContent className="text-lg text-muted-foreground pt-2 pb-4">
+                Czas realizacji zależy od złożoności projektu i wybranego pakietu. Standardowa strona 
+                w pakiecie podstawowym może być gotowa w ciągu 1-2 tygodni. Bardziej rozbudowane projekty, 
+                zawierające system CMS czy blog, mogą zająć 3-4 tygodnie. Na czas realizacji wpływa również 
+                szybkość dostarczenia materiałów przez klienta (teksty, zdjęcia, logo).
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3">
+              <AccordionTrigger className="py-4 text-left text-lg hover:no-underline">
+                Czy mogę samodzielnie edytować treści na stronie?
+              </AccordionTrigger>
+              <AccordionContent className="text-lg text-muted-foreground pt-2 pb-4">
+                Tak, w pakietach Pro i Indywidualnym otrzymujesz dostęp do systemu CMS (Strapi), który 
+                pozwala na samodzielną edycję treści, zdjęć i innych elementów strony bez znajomości 
+                programowania. System jest intuicyjny i przyjazny dla użytkownika, a my zapewniamy 
+                szkolenie z jego obsługi.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+
+        <div className="rounded-lg border bg-card p-6 shadow-sm h-fit">
+          <Accordion type="single" collapsible className="space-y-4">
+            <AccordionItem value="item-4">
+              <AccordionTrigger className="py-4 text-left text-lg hover:no-underline">
+                Jakie wsparcie techniczne otrzymuję?
+              </AccordionTrigger>
+              <AccordionContent className="text-lg text-muted-foreground pt-2 pb-4">
+                Zapewniamy bieżące wsparcie techniczne, które obejmuje monitoring działania strony, 
+                aktualizacje bezpieczeństwa, kopie zapasowe oraz pomoc w przypadku problemów technicznych. 
+                W pakiecie Pro oferujemy priorytetowe wsparcie oraz dodatkowe usługi monitoringu 
+                wydajności poprzez Sentry i analizę zachowań użytkowników przez PostHog.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-5">
+              <AccordionTrigger className="py-4 text-left text-lg hover:no-underline">
+                Co wyróżnia wasze strony na tle konkurencji?
+              </AccordionTrigger>
+              <AccordionContent className="text-lg text-muted-foreground pt-2 pb-4">
+                Nasze strony są budowane w oparciu o Next.js - nowoczesną technologię wykorzystywaną przez 
+                największe firmy jak Netflix czy TikTok. Zapewnia to wyjątkową wydajność, szybkość 
+                ładowania i optymalizację pod SEO. W przeciwieństwie do stron opartych na WordPressie, 
+                nasze rozwiązania są bardziej bezpieczne, szybsze i lepiej zoptymalizowane pod kątem 
+                wyszukiwarek.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-6">
+              <AccordionTrigger className="py-4 text-left text-lg hover:no-underline">
+                Jak wygląda kwestia własności strony?
+              </AccordionTrigger>
+              <AccordionContent className="text-lg text-muted-foreground pt-2 pb-4">
+                W przypadku jednorazowej opłaty za stronę, otrzymujesz pełne prawa własności do kodu oraz 
+                wszystkie niezbędne dostępy już pierwszego dnia. Przy modelu subskrypcyjnym możesz 
+                zrezygnować z usługi z miesięcznym okresem wypowiedzenia, jednak pełne prawa własności 
+                do kodu strony przechodzą na Ciebie po 3 latach regularnych płatności.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-7">
+              <AccordionTrigger className="py-4 text-left text-lg hover:no-underline">
+                Co jeśli chcę zrezygnować z usługi?
+              </AccordionTrigger>
+              <AccordionContent className="text-lg text-muted-foreground pt-2 pb-4">
+                W przypadku rezygnacji z usługi przed ukończeniem trzeciego roku, otrzymujesz dostęp do domeny jednak nie będziesz miał już praw do korzystania z kodu strony. Nie stosujemy długoterminowych zobowiązań - możesz zrezygnować z usługi w dowolnym momencie z zachowaniem miesięcznego okresu wypowiedzenia.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+      </div>
     </section>
   );
 }

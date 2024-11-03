@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useId } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -36,6 +36,7 @@ export function ContactForm() {
   const [isLoading, setIsLoading] = useState(false);
   const email = "kontakt@nextgensites.pl";
   const phone = "+48 694 671 786";
+  const formId = useId();
 
   const handleCopy = (text: string, type: 'email' | 'telefon') => (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -182,7 +183,7 @@ export function ContactForm() {
           {/* Prawa kolumna z formularzem */}
           <div className="lg:border-l lg:pl-6 xl:pl-16">
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4 md:space-y-8">
+              <form id={formId} onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4 md:space-y-8">
                 <FormField
                   control={form.control}
                   name="name"
