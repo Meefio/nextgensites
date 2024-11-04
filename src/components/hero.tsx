@@ -49,11 +49,13 @@ export function Hero() {
           className="rounded-xl"
         />
         <Image
-          alt="SaaS Dashboard"
-          src="/images/dashboard.png"
-          width={1000}
-          height={698}
+          alt="Przykład nowoczesnej strony internetowej"
+          src="/images/hero-image.webp"
+          width={1482}
+          height={899}
           priority
+			 quality={90}
+			 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1482px"
           className="rounded-xl border border-border shadow-lg"
         />
         <div className="absolute inset-0 -z-10 bg-primary/20 [filter:blur(180px)]" />
