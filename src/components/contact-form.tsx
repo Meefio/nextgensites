@@ -103,11 +103,15 @@ export function ContactForm() {
   };
 
   return (
-    <section id="kontakt" className="container flex flex-col items-center gap-6 py-14 md:py-24 sm:gap-7 scroll-mt-header">
+    <section 
+      id="kontakt" 
+      className="container flex flex-col items-center gap-6 py-14 md:py-24 sm:gap-7 scroll-mt-header"
+      aria-label="Formularz kontaktowy"
+    >
       <div className="rounded-lg border bg-card text-card-foreground shadow-sm max-w-full overflow-hidden">
-        <div className="grid gap-6 p-3 md:gap-16 md:p-8 lg:grid-cols-2">
-          {/* Lewa kolumna z danymi kontaktowymi */}
-          <div className="space-y-4 md:space-y-8">
+        <div className="grid gap-6 p-3 md:gap-16 md:p-8 lg:grid-cols-2" role="presentation">
+          {/* Contact Info Column */}
+          <div className="space-y-4 md:space-y-8" role="complementary" aria-label="Informacje kontaktowe">
             <div>
               <h2 className="font-heading text-2xl font-bold md:text-3xl text-center md:text-left">
                 Skontaktuj się z nami
@@ -127,6 +131,7 @@ export function ContactForm() {
                 }}
                 tabIndex={0}
                 role="button"
+                aria-label={`Zadzwoń pod numer ${phone}`}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     window.location.href = `tel:${phone.replace(/\s/g, '')}`;
@@ -161,12 +166,12 @@ export function ContactForm() {
               <Card 
                 className="p-3 md:p-4 transition-colors hover:bg-muted cursor-pointer"
                 onClick={(e) => {
-                  // Sprawdzamy czy tekst nie jest zaznaczany
                   if (window.getSelection()?.toString()) return;
                   window.location.href = `mailto:${email}`;
                 }}
                 tabIndex={0}
                 role="button"
+                aria-label={`Wyślij email na adres ${email}`}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     window.location.href = `mailto:${email}`;
@@ -203,7 +208,12 @@ export function ContactForm() {
           {/* Prawa kolumna z formularzem */}
           <div className="lg:border-l lg:pl-6 xl:pl-16">
             <Form {...form}>
-              <form id={formId} onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4 md:space-y-4">
+              <form 
+                id={formId} 
+                onSubmit={form.handleSubmit(handleSubmit)} 
+                className="space-y-4 md:space-y-4"
+                aria-label="Formularz wysyłania wiadomości"
+              >
                 <FormField
                   control={form.control}
                   name="name"
@@ -251,7 +261,7 @@ export function ContactForm() {
                       <FormLabel className="px-1">Opowiedz nam o swoim projekcie</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="Czy masz już pomysł na swoją stronę? A może potrzebujesz porady? Napisz nam o swoich oczekiwaniach, celach i wszystkim, co uważasz za ważne..."
+                          placeholder="Wiadomość"
                           className="min-h-[120px] resize-none"
                           {...field}
                         />
@@ -289,8 +299,8 @@ export function ContactForm() {
                   )}
                 />
 
-                <Alert>
-                  <Info className="h-4 w-4" />
+                <Alert role="alert" aria-label="Informacja o czasie odpowiedzi">
+                  <Info className="h-4 w-4" aria-hidden="true" />
                   <AlertTitle>Szybko odpowiadamy!</AlertTitle>
                   <AlertDescription>
                     Zazwyczaj odpisujemy w ciągu 24 godzin w dni robocze.
@@ -303,6 +313,7 @@ export function ContactForm() {
                     size="lg" 
                     disabled={isLoading}
                     className="w-full sm:w-auto px-3 md:px-6"
+                    aria-label={isLoading ? "Trwa wysyłanie wiadomości" : "Wyślij wiadomość"}
                   >
                     {isLoading ? "Wysyłanie..." : "Wyślij wiadomość"}
                   </Button>

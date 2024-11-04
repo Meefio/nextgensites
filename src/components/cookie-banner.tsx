@@ -67,7 +67,12 @@ export function CookieBanner() {
   if (!showBanner) return null;
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 px-4 pb-4">
+    <div 
+      className="fixed inset-x-0 bottom-0 z-50 px-4 pb-4" 
+      role="dialog" 
+      aria-labelledby="cookie-title"
+      aria-describedby="cookie-description"
+    >
       <div className="relative mx-auto max-w-4xl">
         <Card className="p-4 shadow-lg md:p-6">
           <Button
@@ -75,17 +80,19 @@ export function CookieBanner() {
             size="icon"
             className="absolute right-2 top-2"
             onClick={() => setShowBanner(false)}
+            aria-label="Zamknij banner plików cookie"
           >
             <X className="h-4 w-4" />
           </Button>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold">Szanujemy Twoją prywatność</h3>
+            <h3 id="cookie-title" className="text-lg font-semibold">
+              Szanujemy Twoją prywatność
+            </h3>
             
             {!showDetails ? (
-              // Uproszczony widok
               <div className="space-y-4">
-                <p className="text-sm text-muted-foreground">
+                <p id="cookie-description" className="text-sm text-muted-foreground">
                   Ta strona używa plików cookie, aby zapewnić najlepsze wrażenia z korzystania z naszej witryny. 
                   Możesz zaakceptować wszystkie, odrzucić opcjonalne lub dostosować swoje preferencje.
                 </p>
@@ -93,39 +100,45 @@ export function CookieBanner() {
                   <Button 
                     variant="outline" 
                     onClick={handleRejectAll}
+                    aria-label="Odrzuć wszystkie pliki cookie"
                   >
                     Odrzuć wszystkie
                   </Button>
                   <Button 
                     variant="outline"
                     onClick={() => setShowDetails(true)}
+                    aria-label="Dostosuj ustawienia plików cookie"
                   >
                     Dostosuj
                   </Button>
                   <Button 
                     onClick={handleAcceptAll}
+                    aria-label="Zaakceptuj wszystkie pliki cookie"
                   >
                     Zaakceptuj wszystkie
                   </Button>
                 </div>
               </div>
             ) : (
-              // Szczegółowy widok z opcjami
               <div className="space-y-4">
-                <p className="text-sm text-muted-foreground">
+                <p id="cookie-description" className="text-sm text-muted-foreground">
                   Używamy plików cookie, aby poprawić Twoje wrażenia z korzystania z naszej strony. 
                   Niektóre z nich są niezbędne do funkcjonowania podstawowych funkcji, podczas gdy 
                   inne pomagają nam zrozumieć, w jaki sposób korzystasz z witryny i jak możemy ją ulepszyć.
                 </p>
 
-                <div className="space-y-4 pt-4">
+                <div className="space-y-4 pt-4" role="group" aria-label="Ustawienia plików cookie">
                   <div className="flex items-center space-x-2">
                     <Checkbox 
                       id="necessary" 
                       checked={consent.necessary} 
                       disabled 
+                      aria-label="Niezbędne pliki cookie (wymagane)"
                     />
-                    <label htmlFor="necessary" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                    <label 
+                      htmlFor="necessary" 
+                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
                       Niezbędne (wymagane)
                     </label>
                   </div>
@@ -137,6 +150,7 @@ export function CookieBanner() {
                       onCheckedChange={(checked) => 
                         setConsent(prev => ({...prev, analytics: checked as boolean}))
                       }
+                      aria-label="Analityczne pliki cookie (PostHog)"
                     />
                     <label htmlFor="analytics" className="text-sm font-medium leading-none">
                       Analityczne (PostHog)
@@ -150,6 +164,7 @@ export function CookieBanner() {
                       onCheckedChange={(checked) => 
                         setConsent(prev => ({...prev, marketing: checked as boolean}))
                       }
+                      aria-label="Marketingowe pliki cookie"
                     />
                     <label htmlFor="marketing" className="text-sm font-medium leading-none">
                       Marketingowe
@@ -169,17 +184,20 @@ export function CookieBanner() {
                   <Button 
                     variant="outline" 
                     onClick={handleRejectAll}
+                    aria-label="Odrzuć wszystkie pliki cookie"
                   >
                     Odrzuć wszystkie
                   </Button>
                   <Button 
                     variant="outline"
                     onClick={handleAcceptSelected}
+                    aria-label="Zaakceptuj wybrane pliki cookie"
                   >
                     Zaakceptuj wybrane
                   </Button>
                   <Button 
                     onClick={handleAcceptAll}
+                    aria-label="Zaakceptuj wszystkie pliki cookie"
                   >
                     Zaakceptuj wszystkie
                   </Button>

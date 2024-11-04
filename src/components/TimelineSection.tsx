@@ -37,9 +37,9 @@ export function TimelineSection() {
       },
     ];
   return (
-    <section id="proces" className="relative container flex flex-col items-center gap-6 py-14 md:py-24 md:px-10 max-w-[900px] scroll-mt-header">
-      <div className="bg-primary/20 [filter:blur(180px)] absolute right-0 top-[50%] md:size-64 size-32" />
+    // <section id="proces" className="relative container flex flex-col items-center gap-6 py-14 md:py-24 md:px-10 max-w-[900px] scroll-mt-header">
+      
       <Timeline data={data} />
-    </section>
+    // </section>
   );
 }

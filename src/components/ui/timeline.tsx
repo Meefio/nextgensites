@@ -42,10 +42,11 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
 	return (
 		<section
-			className='relative container flex flex-col items-center gap-6 py-14 md:py-24 md:px-10 max-w-[900px]'
+			id='proces'
+			className='relative container flex flex-col items-center gap-6 py-14 md:py-24 md:px-10 max-w-[800px] scroll-mt-header'
 			ref={containerRef}
 		>
-         
+
 			<div className='flex flex-col gap-3 animate-fade-in'>
 				<span className='font-bold uppercase text-primary text-center'>
 					Jak działamy
@@ -54,10 +55,10 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 					Proces współpracy krok po kroku
 				</h2>
 				<p className='text-lg text-muted-foreground text-balance text-center'>
-					Przejrzysty plan współpracy od kontaktu <br/>po finalizację projektu
+					Przejrzysty plan współpracy od kontaktu <br />
+					po finalizację projektu
 				</p>
 			</div>
-         
 
 			<div ref={ref} className='relative mx-auto pb-20 '>
 				{data.map((item, index) => (

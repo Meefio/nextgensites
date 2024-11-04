@@ -65,13 +65,6 @@ export const metadata: Metadata = {
     description: 'Tworzymy szybkie i nowoczesne strony internetowe wykorzystując Next.js',
     images: ['https://nextgensites.pl/images/og-image.png'],
   },
-
-  verification: {
-    google: 'twój-kod-weryfikacyjny',
-    yandex: 'twój-kod-weryfikacyjny',
-    yahoo: 'twój-kod-weryfikacyjny',
-  },
-
   alternates: {
     canonical: 'https://nextgensites.pl',
     languages: {
