@@ -36,15 +36,19 @@ export default function PrivacyPolicy() {
       </section>
 
       <section className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">3. Gromadzone dane</h2>
-        <p>Podczas korzystania z naszej strony możemy gromadzić następujące dane:</p>
+        <h2 className="text-2xl font-semibold mb-4">3. Pliki Cookies</h2>
+        <p>Wykorzystujemy następujące rodzaje plików cookies:</p>
+        <p className="font-semibold mt-4">Cookies własne (pierwszej strony):</p>
         <ul className="list-disc pl-6 mt-2">
-          <li>Imię i nazwisko</li>
-          <li>Adres e-mail</li>
-          <li>Numer telefonu</li>
-          <li>Dane zawarte w treści wiadomości</li>
-          <li>Informacje o urządzeniu i przeglądarce</li>
-          <li>Adres IP</li>
+          <li>Niezbędne - umożliwiające podstawowe funkcjonowanie strony</li>
+          <li>Preferencyjne - zapamiętujące wybrane ustawienia</li>
+          <li>Statystyczne - do analizy ruchu na stronie</li>
+        </ul>
+        <p className="font-semibold mt-4">Cookies zewnętrzne (trzeciej strony):</p>
+        <ul className="list-disc pl-6 mt-2">
+          <li>PostHog - analiza zachowań użytkowników</li>
+          <li>Sentry - monitorowanie błędów</li>
+          <li>Google Analytics - statystyki odwiedzin</li>
         </ul>
       </section>
 
@@ -52,12 +56,16 @@ export default function PrivacyPolicy() {
         <h2 className="text-2xl font-semibold mb-4">4. Cele przetwarzania danych</h2>
         <p>Dane osobowe są przetwarzane w następujących celach:</p>
         <ul className="list-disc pl-6 mt-2">
-          <li>Realizacja usług tworzenia i utrzymania stron internetowych</li>
-          <li>Odpowiadanie na zapytania poprzez formularz kontaktowy</li>
-          <li>Wysyłanie informacji marketingowych (po uzyskaniu zgody)</li>
-          <li>Analiza ruchu na stronie przy użyciu PostHog</li>
-          <li>Monitoring błędów i wydajności strony przy użyciu Sentry</li>
+          <li>Realizacja umowy (art. 6 ust. 1 lit. b RODO)</li>
+          <li>Odpowiadanie na zapytania (art. 6 ust. 1 lit. f RODO)</li>
+          <li>Marketing bezpośredni i profilowanie (art. 6 ust. 1 lit. f RODO)</li>
+          <li>Analiza ruchu na stronie (art. 6 ust. 1 lit. f RODO)</li>
+          <li>Marketing zautomatyzowany (art. 6 ust. 1 lit. a RODO - po uzyskaniu zgody)</li>
+          <li>Dostosowywanie treści do preferencji użytkownika (art. 6 ust. 1 lit. f RODO)</li>
         </ul>
+        <p className="mt-4 text-sm text-muted-foreground">
+          Szczegółowe informacje o zakresie i podstawach przetwarzania danych znajdują się w sekcji RODO.
+        </p>
       </section>
 
       <section className="mb-8">

@@ -113,7 +113,7 @@ export function ContactForm() {
                 Skontaktuj się z nami
               </h2>
               <p className="mt-2 text-sm text-muted-foreground md:text-base md:mt-4 text-center md:text-left">
-                Masz pytania? Napisz do nas, a my postaramy się odpowiedzieć jak najszybciej.
+                Masz pytania? Napisz do nas, a my odpowiemy w ciągu 24 godzin!
               </p>
             </div>
 

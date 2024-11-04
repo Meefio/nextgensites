@@ -29,9 +29,7 @@ export function Testimonials() {
               </div>
             </div>
             <p className="text-foreground">
-              &quot;NextGen Sites stworzyło dla nas stronę, która nie tylko świetnie wygląda, ale
-              też przyciąga więcej klientów dzięki lepszemu pozycjonowaniu w Google. Jesteśmy bardzo
-              zadowoleni z efektu i z pewnością polecamy!&quot;
+              &quot;NextGen Sites stworzyli dla nas stronę, która nie tylko wygląda profesjonalnie, ale też znacząco zwiększyła naszą widoczność w Google. Szybkość ładowania i nowoczesny design zrobiły świetne wrażenie na naszych klientach. Polecamy!&quot;
               <br />
             </p>
           </CardContent>

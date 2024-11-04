@@ -26,11 +26,7 @@ export function Faq() {
                 Co zawiera cena strony internetowej?
               </AccordionTrigger>
               <AccordionContent className="text-lg text-muted-foreground pt-2 pb-4">
-                W cenie strony otrzymujesz kompleksową usługę, która obejmuje: projekt i wdrożenie strony, 
-                hosting i domenę, certyfikat SSL, optymalizację pod SEO, responsywny design, integrację z 
-                Google Analytics, podstawowe wsparcie techniczne oraz politykę RODO i cookies. W przypadku 
-                wyższych pakietów dodatkowo oferujemy system CMS do samodzielnej edycji treści, blog, 
-                monitoring wydajności oraz zaawansowaną analitykę.
+              W cenie strony otrzymujesz kompleksową usługę obejmującą: projekt i wdrożenie strony, roczny hosting i domenę, certyfikat SSL, optymalizację SEO, responsywny design, integrację Google Analytics oraz Google Search Console, wsparcie techniczne przez 12 miesięcy, politykę RODO i cookies. Pakiety wyższe dodatkowo zawierają system CMS, blog, monitoring wydajności i zaawansowaną analitykę.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-1">

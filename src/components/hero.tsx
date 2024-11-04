@@ -29,8 +29,7 @@ export function Hero() {
           Stwórz stronę, która przyciągnie klientów
         </h1>
         <p className="max-w-md text-center text-lg text-muted-foreground lg:text-left animate-fade-in">
-          Nowoczesne strony internetowe z wykorzystaniem technologii Next.js – szybciej, lepiej,
-          skuteczniej
+          Tworzymy szybkie i nowoczesne strony internetowe z wykorzystaniem technologii Next.js, które zwiększają sprzedaż i budują wiarygodność Twojej firmy.
         </p>
         <div className="grid gap-3">
           <Button size="lg" asChild>
