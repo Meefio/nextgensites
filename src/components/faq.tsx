@@ -51,7 +51,7 @@ export function Faq() {
               <AccordionContent className="text-lg text-muted-foreground pt-2 pb-4">
                 Czas realizacji zależy od złożoności projektu i wybranego pakietu. Standardowa strona 
                 w pakiecie podstawowym może być gotowa w ciągu 1-2 tygodni. Bardziej rozbudowane projekty, 
-                zawierające system CMS czy blog, mogą zająć 3-4 tygodnie. Na czas realizacji wpływa również 
+                zawierające system CMS czy blog, mogą zająć 2-4 tygodni. Na czas realizacji wpływa również 
                 szybkość dostarczenia materiałów przez klienta (teksty, zdjęcia, logo).
               </AccordionContent>
             </AccordionItem>
