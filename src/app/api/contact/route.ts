@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { ContactFormEmail } from "@/components/emails/contact-form-email";
+import { formSchema } from "@/lib/validations/contact";
 
 // Sprawdzamy czy klucz API istnieje
 if (!process.env.RESEND_API_KEY) {
@@ -8,53 +10,56 @@ if (!process.env.RESEND_API_KEY) {
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// Dodaj endpoint OPTIONS dla preflight requests
+export async function OPTIONS(request: Request) {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    },
+  })
+}
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, message } = body;
+  
+    
+    // Walidacja danych po stronie serwera
+    const result = formSchema.safeParse(body);
+    if (!result.success) {
+      return NextResponse.json(
+        { error: "Nieprawidłowe dane formularza" },
+        { status: 400 }
+      );
+    }
 
-    const data = await resend.emails.send({
-      from: "Kontakt <onboarding@resend.dev>",
+    const { name, email, subject, message, rodo } = result.data;
+
+    await resend.emails.send({
+      from: "NextGen Sites <onboarding@resend.dev>",
       to: ["kontakt@nextgensites.pl"],
-      subject: `Nowa wiadomość od ${name}`,
-      html: `
-        <div style="font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: 0 auto; border: 1px solid #eaeaea; border-radius: 5px;">
-          <h2 style="color: #333; border-bottom: 1px solid #eaeaea; padding-bottom: 10px;">
-            Nowa wiadomość ze strony internetowej
-          </h2>
-          
-          <div style="margin: 20px 0;">
-            <p style="margin: 10px 0;">
-              <strong style="color: #666;">Od:</strong> 
-              <span style="color: #333;">${name}</span>
-            </p>
-            
-            <p style="margin: 10px 0;">
-              <strong style="color: #666;">Email:</strong> 
-              <span style="color: #333;">${email}</span>
-            </p>
-            
-            <div style="margin: 20px 0;">
-              <strong style="color: #666;">Wiadomość:</strong>
-              <p style="color: #333; background: #f9f9f9; padding: 15px; border-radius: 4px; margin: 10px 0;">
-                ${message.replace(/\n/g, '<br/>')}
-              </p>
-            </div>
-          </div>
-          
-          <div style="font-size: 12px; color: #666; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eaeaea;">
-            <p>Ta wiadomość została wysłana z formularza kontaktowego na stronie ${process.env.NEXT_PUBLIC_SITE_URL}</p>
-            <p>Data wysłania: ${new Date().toLocaleString('pl-PL')}</p>
-          </div>
-        </div>
-      `,
+      subject: `Nowa wiadomość: ${subject}`,
+      react: ContactFormEmail({
+        name,
+        email,
+        subject,
+        message,
+        rodo: rodo ? "Tak" : "Nie",
+      }),
     });
 
-    return NextResponse.json(data);
-  } catch (error) {
-    console.error("Błąd wysyłania email:", error);
     return NextResponse.json(
-      { error: "Nie udało się wysłać wiadomości" },
+      { message: "Wiadomość wysłana pomyślnie" },
+      { status: 200 }
+    );
+
+  } catch (error) {
+    console.error("Error sending email:", error);
+    return NextResponse.json(
+      { error: "Wystąpił błąd podczas wysyłania wiadomości" },
       { status: 500 }
     );
   }

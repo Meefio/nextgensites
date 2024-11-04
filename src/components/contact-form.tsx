@@ -16,8 +16,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, MapPin, Phone, Copy } from "lucide-react";
+import { Mail, Phone, Copy } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Info } from "lucide-react"
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -26,8 +29,14 @@ const formSchema = z.object({
   email: z.string().email({
     message: "Wprowadź poprawny adres email.",
   }),
+  subject: z.string().min(3, {
+    message: "Temat musi mieć co najmniej 3 znaki.",
+  }),
   message: z.string().min(10, {
     message: "Wiadomość musi mieć co najmniej 10 znaków.",
+  }),
+  rodo: z.boolean().refine((val) => val === true, {
+    message: "Musisz wyrazić zgodę na przetwarzanie danych osobowych.",
   }),
 });
 
@@ -52,38 +61,41 @@ export function ContactForm() {
     defaultValues: {
       name: "",
       email: "",
+      subject: "",
       message: "",
+      rodo: false,
     },
   });
 
-  const handleSubmit = async (values: z.infer<typeof formSchema>) => {
+  const handleSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
       setIsLoading(true);
+      
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify(data),
       });
 
       if (!response.ok) {
-        throw new Error('Wystąpił błąd podczas wysyłania wiadomości');
+        const error = await response.json();
+        throw new Error(error.message || 'Wystąpił błąd podczas wysyłania wiadomości');
       }
 
       toast({
-        title: "Wiadomość wysłana!",
-        description: "Dziękujemy za kontakt. Odpowiemy najszybciej jak to możliwe.",
-        variant: "default",
+        title: "Sukces!",
+        description: "Twoja wiadomość została wysłana pomyślnie.",
       });
       
       form.reset();
     } catch (error) {
-      console.error(error);
+      console.error('Błąd wysyłania:', error);
       toast({
-        title: "Błąd",
-        description: "Wystąpił problem podczas wysyłania formularza. Spróbuj ponownie później.",
         variant: "destructive",
+        title: "Błąd!",
+        description: error instanceof Error ? error.message : "Wystąpił błąd podczas wysyłania wiadomości",
       });
     } finally {
       setIsLoading(false);
@@ -108,7 +120,11 @@ export function ContactForm() {
             <div className="space-y-3">
               <Card 
                 className="p-3 md:p-4 transition-colors hover:bg-muted cursor-pointer"
-                onClick={() => window.location.href = `tel:${phone.replace(/\s/g, '')}`}
+                onClick={(e) => {
+                  // Sprawdzamy czy tekst nie jest zaznaczany
+                  if (window.getSelection()?.toString()) return;
+                  window.location.href = `tel:${phone.replace(/\s/g, '')}`;
+                }}
                 tabIndex={0}
                 role="button"
                 onKeyDown={(e) => {
@@ -144,7 +160,11 @@ export function ContactForm() {
 
               <Card 
                 className="p-3 md:p-4 transition-colors hover:bg-muted cursor-pointer"
-                onClick={() => window.location.href = `mailto:${email}`}
+                onClick={(e) => {
+                  // Sprawdzamy czy tekst nie jest zaznaczany
+                  if (window.getSelection()?.toString()) return;
+                  window.location.href = `mailto:${email}`;
+                }}
                 tabIndex={0}
                 role="button"
                 onKeyDown={(e) => {
@@ -183,15 +203,15 @@ export function ContactForm() {
           {/* Prawa kolumna z formularzem */}
           <div className="lg:border-l lg:pl-6 xl:pl-16">
             <Form {...form}>
-              <form id={formId} onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4 md:space-y-8">
+              <form id={formId} onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4 md:space-y-4">
                 <FormField
                   control={form.control}
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Imię</FormLabel>
+                      <FormLabel className="px-1">Jak możemy się do Ciebie zwracać?</FormLabel>
                       <FormControl>
-                        <Input placeholder="Jan Kowalski" {...field} />
+                        <Input placeholder="Twoje imię" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -202,9 +222,22 @@ export function ContactForm() {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email</FormLabel>
+                      <FormLabel className="px-1">Gdzie mamy wysłać odpowiedź?</FormLabel>
                       <FormControl>
-                        <Input placeholder="jan@example.com" type="email" {...field} />
+                        <Input placeholder="Twój email" type="email" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="subject"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="px-1">W czym możemy Ci pomóc?</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Temat wiadomości" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -215,10 +248,10 @@ export function ContactForm() {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Wiadomość</FormLabel>
+                      <FormLabel className="px-1">Opowiedz nam o swoim projekcie</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="W czym możemy Ci pomóc?"
+                          placeholder="Czy masz już pomysł na swoją stronę? A może potrzebujesz porady? Napisz nam o swoich oczekiwaniach, celach i wszystkim, co uważasz za ważne..."
                           className="min-h-[120px] resize-none"
                           {...field}
                         />
@@ -227,6 +260,43 @@ export function ContactForm() {
                     </FormItem>
                   )}
                 />
+                
+                <FormField
+                  control={form.control}
+                  name="rodo"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                      <div className="space-y-1 leading-none">
+                        <FormLabel className="text-sm text-muted-foreground font-normal">
+                          Wyrażam zgodę na przetwarzanie moich danych osobowych zgodnie z{" "}
+                          <a 
+                            href="/polityka-prywatnosci" 
+                            className="text-primary hover:underline"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            polityką prywatności
+                          </a>.
+                        </FormLabel>
+                        <FormMessage />
+                      </div>
+                    </FormItem>
+                  )}
+                />
+
+                <Alert>
+                  <Info className="h-4 w-4" />
+                  <AlertTitle>Szybko odpowiadamy!</AlertTitle>
+                  <AlertDescription>
+                    Zazwyczaj odpisujemy w ciągu 24 godzin w dni robocze.
+                  </AlertDescription>
+                </Alert>
+
                 <div className="flex justify-end">
                   <Button 
                     type="submit" 
