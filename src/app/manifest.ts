@@ -28,7 +28,7 @@ export default function manifest(): MetadataRoute.Manifest {
         purpose: 'maskable',
       },
       {
-        src: '/apple-icon.png',
+        src: '/1920.png',
         sizes: '180x180',
         type: 'image/png',
       },
@@ -44,7 +44,7 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
     screenshots: [
       {
-        src: '/screenshots/home.png',
+        src: '/images/home.png',
         sizes: '1920x1080',
         type: 'image/png',
       },

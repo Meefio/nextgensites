@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     description: 'Tworzymy szybkie i nowoczesne strony internetowe wykorzystując Next.js. Profesjonalne strony WWW dla firm z Polski.',
     images: [
       {
-        url: 'https://nextgensites.pl/images/og-image.png',
+        url: '/images/og-image.png',
         width: 1200,
         height: 630,
         alt: 'NextGen Sites - Nowoczesne Strony Internetowe',
@@ -76,7 +76,6 @@ export const metadata: Metadata = {
     canonical: 'https://nextgensites.pl',
     languages: {
       'pl-PL': 'https://nextgensites.pl',
-      'en-US': 'https://nextgensites.pl/en',
     },
   },
 
