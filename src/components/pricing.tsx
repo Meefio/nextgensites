@@ -13,7 +13,7 @@ export function Pricing() {
 	const plans = [
 		{
 			name: 'Podstawowy',
-			monthlyPrice: '150zł',
+			monthlyPrice: '150zł*',
 			oneTimePrice: '2 500zł',
 			description:
 				'Idealne rozwiązanie dla małych firm i startupów, które potrzebują profesjonalnej obecności w sieci',
@@ -33,7 +33,7 @@ export function Pricing() {
 		},
 		{
 			name: 'Pro',
-			monthlyPrice: '250zł',
+			monthlyPrice: '250zł*',
 			oneTimePrice: '3 500zł',
 			description:
 				'Zaawansowane rozwiązanie dla rozwijających się firm, które chcą więcej możliwości i lepszą analitykę',
@@ -173,10 +173,13 @@ export function Pricing() {
 							</ul>
 							{plan.name !== 'Indywidualny' && (
 								<div className='px-7 py-4 mt-auto'>
-									<span className='text-xs text-muted-foreground'>
+									<p className='text-xs text-muted-foreground'>
 										* Podane ceny są cenami netto, należy doliczyć 23%
 										VAT
-									</span>
+									</p>
+                  <p className='text-xs text-muted-foreground'>
+										* Rozpoczęcie projektu po wpłacie zaliczki 500 zł
+									</p>
 								</div>
 							)}
 						</CardContent>
