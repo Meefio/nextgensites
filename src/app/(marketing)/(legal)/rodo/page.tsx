@@ -27,7 +27,7 @@ export default function RODO() {
 
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">1. Administrator danych</h2>
-        <p>Administratorem Państwa danych osobowych jest NextGen Sites z siedzibą w [Adres].</p>
+        <p>Administratorem Państwa danych osobowych jest NextGen Sites z siedzibą w Warszawie.</p>
       </section>
 
       <section className="mb-8">

@@ -38,7 +38,7 @@ export const TechDetailsSection = () => {
             Poznaj techniczne szczegóły
           </h2>
           <p className="text-lg text-muted-foreground text-balance max-w-lg text-center mx-auto">
-            Odkryj, dlaczego nasze rozwiązania wyprzedzają konkurencję
+            Odkryj, dlaczego nasze rozwiązania wyprzedzają konkurencję.
           </p>
         </div>
 

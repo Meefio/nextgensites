@@ -32,7 +32,7 @@ export default function PrivacyPolicy() {
 
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">2. Administrator danych</h2>
-        <p>Administratorem danych osobowych jest NextGen Sites z siedzibą w [Adres].</p>
+        <p>Administratorem danych osobowych jest NextGen Sites z siedzibą w Warszawie.</p>
       </section>
 
       <section className="mb-8">

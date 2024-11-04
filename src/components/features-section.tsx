@@ -26,14 +26,12 @@ export function Features() {
             </div>
             <div>
               <h4 className="mb-2 text-lg font-semibold text-foreground">
-                Lepsza wydajność i szybkość
-                <br />
+                Błyskawiczna wydajność
               </h4>
               <p className="text-muted-foreground">
-                Strony zbudowane w Next.js ładują się o 30% szybciej niż 80% konkurencji, co oznacza
-                lepsze wrażenia użytkowników i wyższe pozycje SEO.
-                <br />
-                <br />
+                Dzięki Next.js Twoja strona ładuje się błyskawicznie, co przekłada się na lepsze 
+                doświadczenia użytkowników i wyższą konwersję. Szybkość działania to także 
+                kluczowy czynnik rankingowy w Google.
               </p>
             </div>
           </CardContent>

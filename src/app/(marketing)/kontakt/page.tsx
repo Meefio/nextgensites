@@ -41,7 +41,7 @@ const contactPageSchema = {
     email: "kontakt@nextgensites.pl",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Romualda Millera 12",
+      streetAddress: "Romualda Millera 12/11",
       addressLocality: "Warszawa",
       postalCode: "01-496",
       addressCountry: "PL"
