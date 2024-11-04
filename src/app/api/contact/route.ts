@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { ContactFormEmail } from "@/components/emails/contact-form-email";
-import { formSchema } from "@/lib/validations/contact";
+import { contactFormSchema } from "@/lib/validations/contact";
 
 // Sprawdzamy czy klucz API istnieje
 if (!process.env.RESEND_API_KEY) {
@@ -28,7 +28,7 @@ export async function POST(request: Request) {
   
     
     // Walidacja danych po stronie serwera
-    const result = formSchema.safeParse(body);
+    const result = contactFormSchema.safeParse(body);
     if (!result.success) {
       return NextResponse.json(
         { error: "Nieprawidłowe dane formularza" },

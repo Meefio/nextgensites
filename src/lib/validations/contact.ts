@@ -1,6 +1,6 @@
 import * as z from "zod";
 
-export const formSchema = z.object({
+export const contactFormSchema = z.object({
   name: z.string().min(2, {
     message: "Imię musi mieć co najmniej 2 znaki.",
   }),
@@ -16,4 +16,6 @@ export const formSchema = z.object({
   rodo: z.boolean().refine((val) => val === true, {
     message: "Musisz wyrazić zgodę na przetwarzanie danych osobowych.",
   }),
-}); 
+});
+
+export type ContactFormData = z.infer<typeof contactFormSchema>; 
