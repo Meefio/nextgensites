@@ -3,7 +3,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { contactFormSchema } from "@/lib/validations/contact";
 import type { ContactFormData } from "@/types/contact";
 import { useState } from "react";
-import { submitContactForm } from "@/app/_actions/contact";
 import { useToast } from "@/hooks/use-toast";
 
 export function useContactForm() {
@@ -15,31 +14,40 @@ export function useContactForm() {
     defaultValues: {
       name: "",
       email: "",
+      subject: "",
       message: "",
-      rodoConsent: false,
-      marketingConsent: false,
+      rodo: false,
     },
   });
 
   const handleSubmit = async (data: ContactFormData) => {
     try {
       setIsLoading(true);
-      const result = await submitContactForm(data);
-      
-      if (result.success) {
-        toast({
-          title: "Sukces!",
-          description: "Twoja wiadomość została wysłana. Odpowiemy najszybciej jak to możliwe.",
-        });
-        form.reset();
-      } else {
-        throw new Error(result.error);
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Wystąpił błąd podczas wysyłania wiadomości');
       }
-    } catch (error) {
+
       toast({
-        title: "Błąd",
-        description: "Wystąpił problem podczas wysyłania wiadomości. Spróbuj ponownie później.",
+        title: "Sukces!",
+        description: "Twoja wiadomość została wysłana pomyślnie.",
+      });
+      
+      form.reset();
+    } catch (error) {
+      console.error('Błąd wysyłania:', error);
+      toast({
         variant: "destructive",
+        title: "Błąd!",
+        description: error instanceof Error ? error.message : "Wystąpił błąd podczas wysyłania wiadomości",
       });
     } finally {
       setIsLoading(false);
