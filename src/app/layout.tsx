@@ -5,6 +5,7 @@ import { Inter, Instrument_Sans } from "next/font/google";
 
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
+import { CookieBanner } from "@/components/cookie-banner";
 
 const fontSans = Inter({
   variable: "--font-sans",
@@ -17,13 +18,13 @@ const fontHeading = Instrument_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://twoja-domena.pl'),
+  metadataBase: new URL('https://nextgensites.pl'),
   title: 'NextGen Sites - Nowoczesne strony internetowe',
   description: 'Tworzymy szybkie i nowoczesne strony internetowe wykorzystując Next.js',
   openGraph: {
     type: 'website',
     locale: 'pl_PL',
-    url: 'https://twoja-domena.pl',
+    url: 'https://nextgensites.pl',
     siteName: 'NextGen Sites',
     images: [
       {
@@ -57,6 +58,7 @@ export default function RootLayout({
         )}
       >
         {children}
+        <CookieBanner />
         <Toaster />
       </body>
     </html>
