@@ -12,7 +12,7 @@ export default function manifest(): MetadataRoute.Manifest {
     icons: [
       {
         src: '/favicon.ico',
-        sizes: 'any',
+        sizes: '16x16 32x32 48x48',
         type: 'image/x-icon',
       },
       {
@@ -28,9 +28,10 @@ export default function manifest(): MetadataRoute.Manifest {
         purpose: 'maskable',
       },
       {
-        src: '/1920.png',
+        src: '/apple-icon.png',
         sizes: '180x180',
         type: 'image/png',
+        purpose: 'any',
       },
     ],
     orientation: 'portrait',
