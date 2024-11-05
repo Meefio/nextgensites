@@ -25,9 +25,9 @@ export function Features() {
               <Gauge size={28} className="text-primary" />
             </div>
             <div>
-              <h4 className="mb-2 text-lg font-semibold text-foreground">
+              <h3 className="mb-2 text-lg font-semibold text-foreground">
                 Błyskawiczna wydajność
-              </h4>
+              </h3>
               <p className="text-muted-foreground">
                 Dzięki Next.js Twoja strona ładuje się błyskawicznie, co przekłada się na lepsze 
                 doświadczenia użytkowników i wyższą konwersję. Szybkość działania to także 

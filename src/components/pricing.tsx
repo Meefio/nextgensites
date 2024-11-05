@@ -126,9 +126,9 @@ export function Pricing() {
 										Najpopularniejsze
 									</span>
 								)}
-								<h4 className='font-heading text-2xl font-semibold text-foreground'>
+								<h3 className='font-heading text-2xl font-semibold text-foreground'>
 									{plan.name}
-								</h4>
+								</h3>
 								<p className='mt-2 text-muted-foreground text-center'>
 									{plan.description}
 								</p>
@@ -155,7 +155,7 @@ export function Pricing() {
 									)}
 								</div>
 								<Button size='lg' asChild className='mt-10 w-full'>
-									<a href='#'>Get started</a>
+									<a href='/kontakt'>Skontaktuj się z nami</a>
 								</Button>
 							</div>
 							<ul className='space-y-2 px-7 py-10 flex-grow'>
@@ -164,7 +164,7 @@ export function Pricing() {
 										key={featureIndex}
 										className='flex items-center gap-3'
 									>
-										<Check size={24} className='text-primary' />
+										<Check size={24} className='text-primary flex-shrink-0' />
 										<span className='text-muted-foreground'>
 											{feature}
 										</span>
