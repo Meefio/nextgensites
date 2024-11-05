@@ -43,7 +43,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 	return (
 		<section
 			id='proces'
-			className='relative container flex flex-col items-center gap-6 py-14 md:py-24 md:px-10 max-w-[800px] scroll-mt-header'
+			className='relative container flex flex-col items-center gap-6 py-14 md:pt-24 md:px-10 max-w-[800px] scroll-mt-header'
 			ref={containerRef}
 		>
 
@@ -60,11 +60,11 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 				</p>
 			</div>
 
-			<div ref={ref} className='relative mx-auto pb-20 '>
+			<div ref={ref} className='relative mx-auto'>
 				{data.map((item, index) => (
 					<div
 						key={index}
-						className='flex justify-start pt-10 md:pt-40 md:gap-x-14'
+						className='flex justify-start pt-10 md:pt-14 md:gap-x-14'
 					>
 						<div className='sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs md:w-full'>
 							<div className='h-14 absolute left-3 w-10 rounded-full bg-background flex items-center justify-center'>

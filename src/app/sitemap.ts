@@ -23,13 +23,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Strony usług
   const servicePages = [
     {
-      url: `${baseUrl}/uslugi/strony-internetowe`,
+      url: `${baseUrl}/uslugi/`,
       lastModified,
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/uslugi/aplikacje-webowe`,
+      url: `${baseUrl}/uslugi/`,
       lastModified,
       changeFrequency: 'weekly' as const,
       priority: 0.9,

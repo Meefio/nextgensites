@@ -43,7 +43,7 @@ export const TechDetailsSection = () => {
         </div>
 
         {/* Sekcje techniczne */}
-        <div className="space-y-24 mt-7">
+        <div className="space-y-24 mt-20">
           {/* Sekcja 1: Next.js */}
           <motion.div className="w-full">
             <div className="flex items-start gap-4 w-full">
@@ -183,7 +183,7 @@ export const TechDetailsSection = () => {
                     <LinkPreview url="https://supabase.com">
                       Supabase
                     </LinkPreview>
-                    {" "} zapewnia bezpieczne przechowywanie danych i błyskawiczny dostęp.
+                    {" "} zapewnia bezpieczne przechowywanie danych z natychmiastową synchronizacją zmian.
                   </span>
 
                   <Card className="p-6">
@@ -203,7 +203,7 @@ export const TechDetailsSection = () => {
                       </li>
                       <li className="flex items-center gap-2">
                         <ArrowUpRight className="h-4 w-4 text-primary" />
-                        Real-time subskrypcje
+                        Natychmiastowa synchronizacja
                       </li>
                     </ul>
                   </Card>
