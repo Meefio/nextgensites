@@ -2,19 +2,18 @@ import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://nextgensites.pl'
-  const lastModified = new Date()
 
   // Główne strony
   const mainPages = [
     {
       url: baseUrl,
-      lastModified,
+      lastModified: new Date(),
       changeFrequency: 'daily' as const,
       priority: 1,
     },
     {
       url: `${baseUrl}/kontakt`,
-      lastModified,
+      lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     },
@@ -23,14 +22,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Strony usług
   const servicePages = [
     {
-      url: `${baseUrl}/uslugi/`,
-      lastModified,
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/uslugi/`,
-      lastModified,
+      url: `${baseUrl}/uslugi`,
+      lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
@@ -40,19 +33,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const legalPages = [
     {
       url: `${baseUrl}/regulamin`,
-      lastModified,
+      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.5,
     },
     {
       url: `${baseUrl}/polityka-prywatnosci`,
-      lastModified,
+      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.5,
     },
     {
       url: `${baseUrl}/rodo`,
-      lastModified,
+      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.5,
     },

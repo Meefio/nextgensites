@@ -9,19 +9,18 @@ export default function robots(): MetadataRoute.Robots {
         disallow: [
           '/api/',
           '/admin/',
-          '*/private/*',
-          '*.pdf',
+          '/private/',
           '/tmp/',
           '/cms/',
         ],
       },
       {
         userAgent: 'GPTBot',
-        disallow: ['/private/', '/admin/'],
+        disallow: ['/admin/'],
       },
       {
         userAgent: 'CCBot',
-        disallow: ['/private/', '/admin/'],
+        disallow: ['/admin/'],
       },
     ],
     sitemap: 'https://nextgensites.pl/sitemap.xml',
