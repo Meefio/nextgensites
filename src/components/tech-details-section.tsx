@@ -309,7 +309,7 @@ export const TechDetailsSection = () => {
                     Sentry - Monitoring błędów
                   </h3>
                   <span className="text-muted-foreground mb-4 block">
-                    <LinkPreview url="https://sentry.io">
+                    <LinkPreview url="https://sentry.io/welcome/">
                       Sentry
                     </LinkPreview>
                     {" "} zapewnia stabilność i wydajność aplikacji w czasie rzeczywistym.

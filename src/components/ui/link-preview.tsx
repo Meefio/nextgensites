@@ -79,7 +79,7 @@ export function LinkPreview({ url, children, className }: LinkPreviewProps) {
               <span className="block relative aspect-[1200/630] w-full overflow-hidden rounded-md bg-muted">
                 <Image
                   src={previewImage}
-                  alt={`Preview of ${url}`}
+                  alt={`Podgląd strony ${url}`}
                   fill
                   className="object-cover"
                   priority
