@@ -19,10 +19,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  // Strony usług
-  const servicePages = [
+  // Strony sekcji
+  const sectionPages = [
     {
-      url: `${baseUrl}/uslugi`,
+      url: `${baseUrl}/#korzysci`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/#proces`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/#technologia`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/#cennik`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.9,
@@ -51,5 +69,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  return [...mainPages, ...servicePages, ...legalPages]
+  return [...mainPages, ...sectionPages, ...legalPages]
 } 

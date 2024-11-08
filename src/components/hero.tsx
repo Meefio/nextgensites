@@ -33,7 +33,7 @@ export function Hero() {
         </p>
         <div className="grid gap-3">
           <Button size="lg" asChild>
-            <Link href="#features" scroll={true}>
+            <Link href="#korzysci" scroll={true}>
               Dowiedz się więcej!
             </Link>
           </Button>

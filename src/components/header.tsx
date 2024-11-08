@@ -22,7 +22,7 @@ export function Header() {
       <div className="flex items-center gap-8">
         <nav className="hidden items-center gap-8 md:flex justify-end">
           <Link
-            href="#features"
+            href="#korzysci"
             className="flex cursor-pointer items-center text-lg font-medium text-muted-foreground transition-colors hover:text-foreground sm:text-sm"
           >
             Korzyści
