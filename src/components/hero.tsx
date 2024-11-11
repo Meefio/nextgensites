@@ -1,45 +1,95 @@
+'use client'
+
+import dynamic from 'next/dynamic'
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+
 
 import { TextShimmer } from "@/components/magicui/text-shimmer";
 import { Button } from "@/components/ui/button";
 import { BorderBeam } from "@/components/magicui/border-beam";
 
+// Dynamiczny import komponentów motion
+const MotionDiv = dynamic(() => import('framer-motion').then((mod) => mod.motion.div), { ssr: false })
+const MotionH1 = dynamic(() => import('framer-motion').then((mod) => mod.motion.h1), { ssr: false })
+const MotionP = dynamic(() => import('framer-motion').then((mod) => mod.motion.p), { ssr: false })
+
 export function Hero() {
+  const containerVariants = {
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  }
+
   return (
     <section className="container flex flex-col items-center gap-10 pb-14 pt-10 md:pb-28 md:pt-20 sm:gap-14 lg:flex-row">
-      <div className="flex flex-1 flex-col items-center gap-8 lg:items-start lg:gap-10">
-        <Link 
-          href="#cennik" 
-          scroll={true}
-          className="inline-flex h-7 items-center justify-between rounded-full border bg-secondary text-secondary-foreground px-3 text-xs transition-all ease-in hover:cursor-pointer hover:bg-white/20 group gap-1 translate-y-[-1rem] animate-fade-in"
+      <MotionDiv 
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className="flex flex-1 flex-col items-center gap-8 lg:items-start lg:gap-10"
+      >
+        <MotionDiv variants={itemVariants}>
+          <Link href="#cennik" scroll={true} className="inline-flex h-7 items-center justify-between rounded-full border bg-secondary text-secondary-foreground px-3 text-xs transition-all ease-in hover:cursor-pointer hover:bg-white/20 group gap-1">
+            <TextShimmer className="inline-flex items-center justify-center">
+              <span className="text-xs text-secondary-foreground/80">
+                Zacznij już za 150 PLN / miesiąc
+              </span>
+              <ArrowRight
+                size={20}
+                className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5"
+              />
+            </TextShimmer>
+          </Link>
+        </MotionDiv>
+
+        <MotionH1 
+          variants={itemVariants}
+          className="max-w-2xl text-center font-heading text-4xl font-semibold sm:text-5xl lg:text-left tracking-tight"
         >
-          <TextShimmer className="inline-flex items-center justify-center">
-            <span className="text-xs text-secondary-foreground/80">
-              Zacznij już za 150 PLN / miesiąc
-            </span>
-            <ArrowRight
-              size={20}
-              className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5"
-            />
-          </TextShimmer>
-        </Link>
-        <h1 className="max-w-2xl text-center font-heading text-4xl font-semibold sm:text-5xl lg:text-left tracking-tight animate-fade-in">
           Stwórz stronę, która przyciągnie klientów
-        </h1>
-        <p className="max-w-md text-center text-lg text-muted-foreground lg:text-left animate-fade-in">
+        </MotionH1>
+
+        <MotionP 
+          variants={itemVariants}
+          className="max-w-md text-center text-lg text-muted-foreground lg:text-left"
+        >
           Tworzymy szybkie i nowoczesne strony internetowe z wykorzystaniem technologii Next.js, które zwiększają sprzedaż i budują wiarygodność Twojej firmy.
-        </p>
-        <div className="grid gap-3">
+        </MotionP>
+
+        <MotionDiv 
+          variants={itemVariants}
+          className="grid gap-3"
+        >
           <Button size="lg" asChild>
             <Link href="#korzysci" scroll={true}>
               Dowiedz się więcej!
             </Link>
           </Button>
-        </div>
-      </div>
-      <div className="relative flex-1 animate-fade-in">
+        </MotionDiv>
+      </MotionDiv>
+
+      <MotionDiv
+        initial="hidden"
+        animate="visible"
+        variants={itemVariants}
+        className="relative flex-1"
+      >
         <BorderBeam
           size={200}
           anchor={90}
@@ -59,7 +109,7 @@ export function Hero() {
           className="rounded-xl border border-border shadow-lg"
         />
         <div className="absolute inset-0 -z-10 bg-primary/20 [filter:blur(180px)]" />
-      </div>
+      </MotionDiv>
     </section>
   );
 }
