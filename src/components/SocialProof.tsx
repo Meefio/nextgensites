@@ -3,6 +3,7 @@
 import { useInView } from "framer-motion"
 import { useRef } from "react"
 import { AnimatedElement } from "@/components/motion/animated-element"
+import Image from "next/image"
 
 export function SocialProof() {
   const sectionRef = useRef(null)
@@ -33,10 +34,12 @@ export function SocialProof() {
           <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-16 [&_path]:fill-white">
             {logos.map((logo) => (
               <li key={logo.alt}>
-                <img
+                <Image
                   alt={logo.alt}
                   src={logo.src}
-                  className={`h-8 w-28 px-2 ${logo.className}`}
+                  width={112}
+                  height={32}
+                  className={`px-2 ${logo.className}`}
                 />
               </li>
             ))}
@@ -77,10 +80,12 @@ export function SocialProof() {
                     ease: [0.4, 0, 0.2, 1]
                   }}
                 >
-                  <img
+                  <Image
                     alt={logo.alt}
                     src={logo.src}
-                    className={`h-8 w-28 px-2 ${logo.className}`}
+                    width={112}
+                    height={32}
+                    className={`px-2 ${logo.className}`}
                   />
                 </AnimatedElement>
               ))}
