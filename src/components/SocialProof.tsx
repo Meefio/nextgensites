@@ -51,12 +51,12 @@ export function SocialProof() {
                     opacity: isInView ? 1 : 0, 
                     y: isInView ? 0 : 20 
                   }}
+                  className="only-desktop-animation md:hover:scale-90 duration-300 transition-all"
                   transition={{
                     duration: 0.5,
                     delay: isInView ? 0.4 + (index * 0.1) : 0,
                     ease: [0.4, 0, 0.2, 1]
                   }}
-                  className="hover:scale-90 duration-300 transition-all"
                 >
                   <img
                     alt={logo.alt}
