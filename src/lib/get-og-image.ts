@@ -9,10 +9,8 @@ export async function getOGImage(url: string): Promise<string> {
       return match[1];
     }
     
-    // Jeśli nie znaleziono og:image, zwracamy domyślny obraz
     return '/images/previews/default-preview.png';
   } catch (error) {
-    console.error('Error fetching OG image:', error);
     return '/images/previews/default-preview.png';
   }
 } 

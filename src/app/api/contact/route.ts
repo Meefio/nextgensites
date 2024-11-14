@@ -57,7 +57,6 @@ export async function POST(request: Request) {
     );
 
   } catch (error) {
-    console.error("Error sending email:", error);
     return NextResponse.json(
       { error: "Wystąpił błąd podczas wysyłania wiadomości" },
       { status: 500 }

@@ -25,7 +25,6 @@ export async function submitContactForm(data: ContactFormData) {
 
     return { success: true };
   } catch (error) {
-    console.error('Błąd podczas wysyłania formularza:', error);
     return { success: false, error: 'Wystąpił błąd podczas wysyłania formularza' };
   }
 } 

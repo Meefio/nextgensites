@@ -102,7 +102,6 @@ export function ContactForm() {
 
 			form.reset()
 		} catch (error) {
-			console.error('Błąd wysyłania:', error)
 			toast({
 				variant: 'destructive',
 				title: 'Błąd!',

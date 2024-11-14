@@ -36,12 +36,10 @@ export function LinkPreview({ url, children, className }: LinkPreviewProps) {
   }, [url]);
 
   const handleMouseEnter = () => {
-    console.log('Mouse enter');
     setIsHovered(true);
   };
 
   const handleMouseLeave = () => {
-    console.log('Mouse leave');
     setIsHovered(false);
   };
 
