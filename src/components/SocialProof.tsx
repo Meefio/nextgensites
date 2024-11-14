@@ -25,12 +25,30 @@ export function SocialProof() {
       className="text-center mx-auto max-w-[80rem] px-6 md:px-8 py-14 min-h-72 overflow-hidden"
     >
       <div className="mx-auto max-w-screen-xl px-4 md:px-8">
+        <h2 className="md:hidden text-center text-sm font-semibold text-muted-foreground">
+          FIRMY, KTÓRE KORZYSTAJĄ Z NEXT.JS
+        </h2>
+        
+        <div className="mt-6 md:hidden">
+          <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-16 [&_path]:fill-white">
+            {logos.map((logo) => (
+              <li key={logo.alt}>
+                <img
+                  alt={logo.alt}
+                  src={logo.src}
+                  className={`h-8 w-28 px-2 ${logo.className}`}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+
         <AnimatedElement 
           as="h2" 
           delay={isInView ? 0.2 : 0}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
-          className="text-center text-sm font-semibold text-muted-foreground"
+          className="hidden md:block text-center text-sm font-semibold text-muted-foreground"
         >
           FIRMY, KTÓRE KORZYSTAJĄ Z NEXT.JS
         </AnimatedElement>
@@ -39,6 +57,7 @@ export function SocialProof() {
           delay={isInView ? 0.3 : 0}
           initial={{ opacity: 0 }}
           animate={{ opacity: isInView ? 1 : 0 }}
+          className="hidden md:block"
         >
           <div className="mt-6">
             <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-16 [&_path]:fill-white">
@@ -51,7 +70,7 @@ export function SocialProof() {
                     opacity: isInView ? 1 : 0, 
                     y: isInView ? 0 : 20 
                   }}
-                  className="only-desktop-animation md:hover:scale-90 md:transition-all duration-300"
+                  className="md:hover:scale-90 md:transition-all duration-300"
                   transition={{
                     duration: 0.5,
                     delay: isInView ? 0.4 + (index * 0.1) : 0,
