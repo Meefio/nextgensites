@@ -41,37 +41,6 @@ const features = [
 ]
 
 export function Features() {
-  const [screenSize, setScreenSize] = useState<'mobile' | 'tablet' | 'desktop'>('mobile')
-
-  useEffect(() => {
-    const updateScreenSize = () => {
-      if (window.matchMedia('(min-width: 1024px)').matches) {
-        setScreenSize('desktop')
-      } else if (window.matchMedia('(min-width: 640px)').matches) {
-        setScreenSize('tablet')
-      } else {
-        setScreenSize('mobile')
-      }
-    }
-
-    updateScreenSize()
-    window.addEventListener('resize', updateScreenSize)
-    return () => window.removeEventListener('resize', updateScreenSize)
-  }, [])
-
-  const calculateDelay = (index: number, currentScreenSize: 'mobile' | 'tablet' | 'desktop') => {
-    if (currentScreenSize === 'mobile') return 0
-
-    switch (currentScreenSize) {
-      case 'desktop':
-        return (index % 3) * 0.15 + Math.floor(index / 3) * 0.3
-      case 'tablet':
-        return (index % 2) * 0.15 + Math.floor(index / 2) * 0.3
-      default:
-        return 0
-    }
-  }
-
   return (
     <section 
       id="korzysci" 
@@ -93,7 +62,7 @@ export function Features() {
         </p>
       </AnimatedElement>
 
-      <div className="mt-6 grid auto-rows-fr grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-7 grid w-full grid-cols-1 gap-7 md:grid-cols-2 lg:grid-cols-3">
         {features.map((feature, index) => {
           const Icon = feature.icon
           const showBorderBeam = index % 2 !== 0
@@ -101,8 +70,8 @@ export function Features() {
           return (
             <AnimatedElement
               key={feature.title}
-              delay={calculateDelay(index, screenSize)}
-              viewport={{ once: true, margin: "-20% 0px" }}
+              className="md:motion-safe:animate-delay-[200ms]"
+              delay={0}
             >
               <Card className="shadow-lg relative h-full">
                 {showBorderBeam && (

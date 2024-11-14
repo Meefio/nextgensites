@@ -18,31 +18,18 @@ import {
   AlertCircle,
   Activity,
   Bell,
-  Sparkles,
-  Smartphone,
-  Eye,
-  MousePointer,
-  Users,
+  
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { LinkPreview } from "@/components/ui/link-preview";
-import { useMediaQuery } from "@/hooks/use-media-query";
 import { AnimatedElement } from "@/components/motion/animated-element";
 
 export const TechDetailsSection = () => {
-  const isMobile = useMediaQuery("(max-width: 768px)");
-
   return (
     <section id="technologie" className="relative py-24 bg-background scroll-mt-header">
       <div className="container">
         {/* Nagłówek sekcji */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col gap-3"
-        >
+        <AnimatedElement className="flex flex-col gap-3">
           <span className="font-bold uppercase text-primary text-center">Technologie</span>
           <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl text-balance text-center">
             Poznaj techniczne szczegóły
@@ -50,18 +37,12 @@ export const TechDetailsSection = () => {
           <p className="text-lg text-muted-foreground text-balance max-w-lg text-center mx-auto">
             Odkryj, dlaczego nasze rozwiązania wyprzedzają konkurencję.
           </p>
-        </motion.div>
+        </AnimatedElement>
 
         {/* Sekcje techniczne */}
         <div className="space-y-24 mt-20">
           {/* Sekcja 1: Next.js */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5 }}
-            className="w-full"
-          >
+          <AnimatedElement className="w-full">
             <div className="flex items-start gap-4 w-full">
               <div className="rounded-full bg-primary/10 p-3 shrink-0">
                 <Zap className="h-6 w-6 text-primary" />
@@ -80,15 +61,9 @@ export const TechDetailsSection = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
                   {[/* your card data */].map((card, index) => (
-                    <motion.div
+                    <AnimatedElement
                       key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.2 }}
-                      transition={{ 
-                        duration: 0.5,
-                        delay: isMobile ? 0 : index * 0.1 
-                      }}
+                      delay={0}
                     >
                       <Card className="p-6">
                         <h4 className="font-semibold mb-3 flex items-center gap-2">
@@ -114,22 +89,17 @@ export const TechDetailsSection = () => {
                           </li>
                         </ul>
                       </Card>
-                    </motion.div>
+                    </AnimatedElement>
                   ))}
                 </div>
               </div>
             </div>
-          </motion.div>
+          </AnimatedElement>
 
           {/* Sekcja 2: Supabase i PostHog */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-24 w-full">
             {/* Supabase */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5 }}
-            >
+            <AnimatedElement>
               <div className="flex items-start gap-4">
                 <div className="rounded-full bg-primary/10 p-3">
                   <Database className="h-6 w-6 text-primary" />
@@ -168,15 +138,10 @@ export const TechDetailsSection = () => {
                   </Card>
                 </div>
               </div>
-            </motion.div>
+            </AnimatedElement>
 
             {/* PostHog */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5 }}
-            >
+            <AnimatedElement delay={0.2}>
               <div className="flex items-start gap-4">
                 <div className="rounded-full bg-primary/10 p-3">
                   <LineChart className="h-6 w-6 text-primary" />
@@ -215,18 +180,13 @@ export const TechDetailsSection = () => {
                   </Card>
                 </div>
               </div>
-            </motion.div>
+            </AnimatedElement>
           </div>
 
           {/* Sekcja 3: Strapi i Sentry */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-24 w-full">
             {/* Strapi */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5 }}
-            >
+            <AnimatedElement>
               <div className="flex items-start gap-4">
                 <div className="rounded-full bg-primary/10 p-3">
                   <FileEdit className="h-6 w-6 text-primary" />
@@ -265,15 +225,10 @@ export const TechDetailsSection = () => {
                   </Card>
                 </div>
               </div>
-            </motion.div>
+            </AnimatedElement>
 
             {/* Sentry */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5 }}
-            >
+            <AnimatedElement delay={0.2}>
               <div className="flex items-start gap-4">
                 <div className="rounded-full bg-primary/10 p-3">
                   <AlertCircle className="h-6 w-6 text-primary" />
@@ -312,7 +267,7 @@ export const TechDetailsSection = () => {
                   </Card>
                 </div>
               </div>
-            </motion.div>
+            </AnimatedElement>
           </div>
         </div>
       </div>
