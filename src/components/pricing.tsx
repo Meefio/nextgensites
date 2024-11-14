@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Check } from 'lucide-react'
+import { AnimatePresence, motion } from 'framer-motion'
 
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -15,7 +16,7 @@ export function Pricing() {
 		{
 			name: 'Podstawowy',
 			monthlyPrice: '150zł*',
-			oneTimePrice: '2 500zł',
+			oneTimePrice: '2500zł',
 			description:
 				'Idealne rozwiązanie dla małych firm i startupów, które potrzebują profesjonalnej obecności w sieci',
 			features: [
@@ -35,7 +36,7 @@ export function Pricing() {
 		{
 			name: 'Pro',
 			monthlyPrice: '250zł*',
-			oneTimePrice: '3 500zł',
+			oneTimePrice: '3500zł',
 			description:
 				'Zaawansowane rozwiązanie dla rozwijających się firm, które chcą więcej możliwości i lepszą analitykę',
 			features: [
@@ -71,6 +72,34 @@ export function Pricing() {
 			],
 		},
 	]
+
+	const PriceDisplay = ({ plan }: { plan: typeof plans[0] }) => {
+		if (plan.name === 'Indywidualny') {
+			return <span className='text-lg'>wycena indywidualna</span>
+		}
+
+		return (
+			<div className='relative h-[60px] flex items-center justify-center'>
+				<AnimatePresence mode='wait'>
+					<motion.div
+						key={isMonthly ? 'monthly' : 'onetime'}
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						exit={{ opacity: 0, y: -20 }}
+						transition={{ duration: 0.2 }}
+						className='absolute'
+					>
+						<span className='font-heading font-semibold text-4xl'>
+							{isMonthly ? plan.monthlyPrice : plan.oneTimePrice}
+						</span>
+						<span className='text-sm'>
+							{isMonthly ? '/miesięcznie' : '/jednorazowo'}
+						</span>
+					</motion.div>
+				</AnimatePresence>
+			</div>
+		)
+	}
 
 	return (
 		<section
@@ -139,26 +168,7 @@ export function Pricing() {
 										{plan.description}
 									</p>
 									<div className='mt-5'>
-										{plan.name !== 'Indywidualny' && (
-											<>
-												<span className='font-heading font-semibold text-4xl'>
-													{isMonthly
-														? plan.monthlyPrice
-														: `${plan.oneTimePrice}*`}
-												</span>
-												{isMonthly && (
-													<span className='text-sm'>/miesięcznie</span>
-												)}
-												{!isMonthly && (
-													<span className='text-sm'>/jednorazowo</span>
-												)}
-											</>
-										)}
-										{plan.name === 'Indywidualny' && (
-											<span className='text-lg'>
-												wycena indywidualna
-											</span>
-										)}
+										<PriceDisplay plan={plan} />
 									</div>
 									<Button size='lg' asChild className='mt-10 w-full'>
 										<a href='/kontakt'>Skontaktuj się z nami</a>
@@ -184,7 +194,7 @@ export function Pricing() {
 											VAT
 										</p>
 										<p className='text-xs text-muted-foreground'>
-											* Rozpoczęcie projektu po wpłacie zaliczki 500 zł
+											* Rozpoczęcie projektu po wpłacie zadatku 500 zł
 										</p>
 									</div>
 								)}

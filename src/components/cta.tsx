@@ -44,14 +44,14 @@ export function CtaSection() {
 			<AnimatedElement
 				as="p"
 				className='relative text-lg text-muted-foreground text-balance max-w-lg text-center'
-				delay={0.4}
+				delay={0.3}
 			>
 				Rozpocznij transformację swojej obecności online już dziś!
 				Pierwsza konsultacja jest bezpłatna.
 			</AnimatedElement>
 
 			<AnimatedElement
-				delay={0.6}
+				delay={0.4}
 				className="scale-100 hover:scale-105 transition-transform duration-300"
 			>
 				<Button

@@ -4,11 +4,12 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import { AnimatedElement } from "@/components/motion/animated-element";
 
 export function Faq() {
   return (
     <section className="container flex flex-col items-center gap-6 pt-14 pb-24 md:py-24 sm:gap-7">
-      <div className="flex flex-col gap-3">
+      <AnimatedElement className="flex flex-col gap-3">
         <span className="font-bold uppercase text-primary text-center">Faq</span>
         <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl text-balance text-center">
           Najczęściej zadawane pytania
@@ -16,10 +17,14 @@ export function Faq() {
         <p className="text-lg text-muted-foreground text-balance max-w-lg text-center">
           Jeśli masz jakieś dodatkowe pytania, napisz do nas!
         </p>
-      </div>
+      </AnimatedElement>
       
       <div className="mt-6 w-full grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl">
-        <div className="rounded-lg border bg-card p-6 shadow-sm h-fit">
+        <AnimatedElement 
+          direction="left" 
+          delay={0.2} 
+          className="rounded-lg border bg-card p-6 shadow-sm h-fit"
+        >
           <Accordion type="single" collapsible className="space-y-4">
             <AccordionItem value="item-0">
               <AccordionTrigger className="py-4 text-left text-lg hover:no-underline">
@@ -63,9 +68,13 @@ export function Faq() {
               </AccordionContent>
             </AccordionItem>
           </Accordion>
-        </div>
+        </AnimatedElement>
 
-        <div className="rounded-lg border bg-card p-6 shadow-sm h-fit">
+        <AnimatedElement 
+          direction="right" 
+          delay={0.3} 
+          className="rounded-lg border bg-card p-6 shadow-sm h-fit"
+        >
           <Accordion type="single" collapsible className="space-y-4">
             <AccordionItem value="item-4">
               <AccordionTrigger className="py-4 text-left text-lg hover:no-underline">
@@ -110,7 +119,7 @@ export function Faq() {
               </AccordionContent>
             </AccordionItem>
           </Accordion>
-        </div>
+        </AnimatedElement>
       </div>
     </section>
   );
