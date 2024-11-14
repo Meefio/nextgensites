@@ -6,6 +6,7 @@ import {
 	motion,
 } from 'framer-motion'
 import React, { useEffect, useRef, useState } from 'react'
+import { AnimatedElement } from '@/components/motion/animated-element'
 
 interface TimelineEntry {
 	title: string
@@ -46,42 +47,84 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 			className='relative container flex flex-col items-center gap-6 py-14 md:pt-24 md:px-10 max-w-[800px] scroll-mt-header'
 			ref={containerRef}
 		>
-
-			<div className='flex flex-col gap-3 animate-fade-in'>
-				<span className='font-bold uppercase text-primary text-center'>
+			<motion.div
+				initial={{ opacity: 0, y: 20 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				viewport={{ once: true, margin: "-20%" }}
+				transition={{ duration: 0.7, delay: 0.2 }}
+				className='flex flex-col gap-3'
+			>
+				<AnimatedElement as="span" delay={0.3} className='font-bold uppercase text-primary text-center'>
 					Jak działamy
-				</span>
-				<h2 className='font-heading text-3xl font-semibold tracking-tight sm:text-4xl text-balance text-center'>
+				</AnimatedElement>
+				
+				<AnimatedElement as="h2" delay={0.4} className='font-heading text-3xl font-semibold tracking-tight sm:text-4xl text-balance text-center'>
 					Proces współpracy krok po kroku
-				</h2>
-				<p className='text-lg text-muted-foreground text-balance text-center'>
+				</AnimatedElement>
+				
+				<AnimatedElement as="p" delay={0.5} className='text-lg text-muted-foreground text-balance text-center'>
 					Przejrzysty plan współpracy od kontaktu <br />
 					po finalizację projektu
-				</p>
-			</div>
+				</AnimatedElement>
+			</motion.div>
 
 			<div ref={ref} className='relative mx-auto'>
 				{data.map((item, index) => (
-					<div
+					<motion.div
 						key={index}
+						initial={{ opacity: 0 }}
+						whileInView={{ opacity: 1 }}
+						viewport={{ once: true, margin: "-20%" }}
+						transition={{ duration: 0.5 }}
 						className='flex justify-start pt-10 md:pt-14 md:gap-x-14'
 					>
-						<div className='sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs md:w-full'>
+						<motion.div 
+							initial={{ opacity: 0 }}
+							whileInView={{ opacity: 1 }}
+							viewport={{ once: true, margin: "-20%" }}
+							transition={{ duration: 0.5 }}
+							className='sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs md:w-full'
+						>
 							<div className='h-14 absolute left-3 w-10 rounded-full bg-background flex items-center justify-center'>
 								<div className='h-4 w-4 rounded-full bg-muted-foreground p-2' />
 							</div>
-							<h3 className='hidden md:block text-lg md:pl-20 md:text-lg font-bold text-muted-foreground'>
+							<motion.h3 
+								initial={{ opacity: 0 }}
+								whileInView={{ opacity: 1 }}
+								viewport={{ once: true, margin: "-20%" }}
+								transition={{ duration: 0.5 }}
+								className='hidden md:block text-lg md:pl-20 md:text-lg font-bold text-muted-foreground'
+							>
 								{item.title}
-							</h3>
-						</div>
+							</motion.h3>
+						</motion.div>
 
-						<div className='relative pl-20 pr-4 md:pl-4 w-full'>
-							<h3 className='md:hidden block text-lg mb-4 text-left font-bold text-muted-foreground'>
+						<motion.div
+							initial={{ opacity: 0 }}
+							whileInView={{ opacity: 1 }}
+							viewport={{ once: true, margin: "-20%" }}
+							transition={{ duration: 0.5 }}
+							className='relative pl-20 pr-4 md:pl-4 w-full'
+						>
+							<motion.h3 
+								initial={{ opacity: 0 }}
+								whileInView={{ opacity: 1 }}
+								viewport={{ once: true, margin: "-20%" }}
+								transition={{ duration: 0.5 }}
+								className='md:hidden block text-lg mb-4 text-left font-bold text-muted-foreground'
+							>
 								{item.title}
-							</h3>
-							{item.content}
-						</div>
-					</div>
+							</motion.h3>
+							<motion.div
+								initial={{ opacity: 0 }}
+								whileInView={{ opacity: 1 }}
+								viewport={{ once: true, margin: "-20%" }}
+								transition={{ duration: 0.5 }}
+							>
+								{item.content}
+							</motion.div>
+						</motion.div>
+					</motion.div>
 				))}
 				<div
 					// style={{ height: height + 'px' }}
