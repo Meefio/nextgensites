@@ -68,12 +68,12 @@ export function CookieBanner() {
 
   return (
     <div 
-      className="fixed inset-x-0 bottom-0 z-50 px-4 pb-4" 
+      className="fixed inset-x-0 bottom-0 z-50 px-4 pb-4 lg:inset-x-auto lg:right-4 lg:max-w-[450px]" 
       role="dialog" 
       aria-labelledby="cookie-title"
       aria-describedby="cookie-description"
     >
-      <div className="relative mx-auto max-w-4xl">
+      <div className="relative mx-auto max-w-4xl lg:mx-0">
         <Card className="p-4 shadow-lg md:p-6">
           <Button
             variant="ghost"
@@ -96,11 +96,13 @@ export function CookieBanner() {
                   Ta strona używa plików cookie, aby zapewnić najlepsze wrażenia z korzystania z naszej witryny. 
                   Możesz zaakceptować wszystkie, odrzucić opcjonalne lub dostosować swoje preferencje.
                 </p>
-                <div className="flex flex-col gap-2 sm:flex-row sm:justify-end">
+                <div className="flex flex-col gap-2 lg:flex-row lg:gap-2">
                   <Button 
                     variant="outline" 
                     onClick={handleRejectAll}
                     aria-label="Odrzuć wszystkie pliki cookie"
+                    size="sm"
+                    className="lg:text-xs"
                   >
                     Odrzuć wszystkie
                   </Button>
@@ -108,12 +110,16 @@ export function CookieBanner() {
                     variant="outline"
                     onClick={() => setShowDetails(true)}
                     aria-label="Dostosuj ustawienia plików cookie"
+                    size="sm"
+                    className="lg:text-xs"
                   >
                     Dostosuj
                   </Button>
                   <Button 
                     onClick={handleAcceptAll}
                     aria-label="Zaakceptuj wszystkie pliki cookie"
+                    size="sm"
+                    className="lg:text-xs"
                   >
                     Zaakceptuj wszystkie
                   </Button>
@@ -180,11 +186,13 @@ export function CookieBanner() {
                   .
                 </p>
 
-                <div className="flex flex-col gap-2 sm:flex-row sm:justify-end">
+                <div className="flex flex-col gap-2 lg:flex-row lg:gap-1">
                   <Button 
                     variant="outline" 
                     onClick={handleRejectAll}
                     aria-label="Odrzuć wszystkie pliki cookie"
+                    size="sm"
+                    className="lg:text-xs"
                   >
                     Odrzuć wszystkie
                   </Button>
@@ -192,12 +200,16 @@ export function CookieBanner() {
                     variant="outline"
                     onClick={handleAcceptSelected}
                     aria-label="Zaakceptuj wybrane pliki cookie"
+                    size="sm"
+                    className="lg:text-xs"
                   >
                     Zaakceptuj wybrane
                   </Button>
                   <Button 
                     onClick={handleAcceptAll}
                     aria-label="Zaakceptuj wszystkie pliki cookie"
+                    size="sm"
+                    className="lg:text-xs"
                   >
                     Zaakceptuj wszystkie
                   </Button>
