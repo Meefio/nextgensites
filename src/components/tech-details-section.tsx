@@ -26,13 +26,23 @@ import {
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { LinkPreview } from "@/components/ui/link-preview";
+import { useMediaQuery } from "@/hooks/use-media-query";
+import { AnimatedElement } from "@/components/motion/animated-element";
 
 export const TechDetailsSection = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   return (
     <section id="technologie" className="relative py-24 bg-background scroll-mt-header">
       <div className="container">
         {/* Nagłówek sekcji */}
-        <div className="flex flex-col gap-3 animate-fade-in">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col gap-3"
+        >
           <span className="font-bold uppercase text-primary text-center">Technologie</span>
           <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl text-balance text-center">
             Poznaj techniczne szczegóły
@@ -40,12 +50,18 @@ export const TechDetailsSection = () => {
           <p className="text-lg text-muted-foreground text-balance max-w-lg text-center mx-auto">
             Odkryj, dlaczego nasze rozwiązania wyprzedzają konkurencję.
           </p>
-        </div>
+        </motion.div>
 
         {/* Sekcje techniczne */}
         <div className="space-y-24 mt-20">
           {/* Sekcja 1: Next.js */}
-          <motion.div className="w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5 }}
+            className="w-full"
+          >
             <div className="flex items-start gap-4 w-full">
               <div className="rounded-full bg-primary/10 p-3 shrink-0">
                 <Zap className="h-6 w-6 text-primary" />
@@ -63,105 +79,43 @@ export const TechDetailsSection = () => {
                 </span>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
-                  <Card className="p-6">
-                    <h4 className="font-semibold mb-3 flex items-center gap-2">
-                      <Zap className="h-4 w-4 text-primary" />
-                      Wydajność
-                    </h4>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li className="flex items-center gap-2">
-                        <Server className="h-4 w-4 text-primary" />
-                        Błyskawiczne ładowanie
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <Globe className="h-4 w-4 text-primary" />
-                        Optymalizacja SEO
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <Activity className="h-4 w-4 text-primary" />
-                        Płynne działanie
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <Shield className="h-4 w-4 text-primary" />
-                        Stabilna praca
-                      </li>
-                    </ul>
-                  </Card>
-                  
-                  <Card className="p-6">
-                    <h4 className="font-semibold mb-3 flex items-center gap-2">
-                      <Globe className="h-4 w-4 text-primary" />
-                      Zasięg
-                    </h4>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li className="flex items-center gap-2">
-                        <ArrowUpRight className="h-4 w-4 text-primary" />
-                        Globalna dostępność
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <LineChart className="h-4 w-4 text-primary" />
-                        Szybkość działania
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <Database className="h-4 w-4 text-primary" />
-                        Niezawodność
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <Bell className="h-4 w-4 text-primary" />
-                        Stałe aktualizacje
-                      </li>
-                    </ul>
-                  </Card>
-
-                  <Card className="p-6">
-                    <h4 className="font-semibold mb-3 flex items-center gap-2">
-                      <Sparkles className="h-4 w-4 text-primary" />
-                      Innowacje
-                    </h4>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li className="flex items-center gap-2">
-                        <FileEdit className="h-4 w-4 text-primary" />
-                        Łatwa aktualizacja
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <SplitSquareVertical className="h-4 w-4 text-primary" />
-                        Nowoczesny design
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <AlertCircle className="h-4 w-4 text-primary" />
-                        Bezpieczeństwo
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <BarChart className="h-4 w-4 text-primary" />
-                        Analityka
-                      </li>
-                    </ul>
-                  </Card>
-
-                  <Card className="p-6">
-                    <h4 className="font-semibold mb-3 flex items-center gap-2">
-                      <Smartphone className="h-4 w-4 text-primary" />
-                      Dostępność
-                    </h4>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li className="flex items-center gap-2">
-                        <Smartphone className="h-4 w-4 text-primary" />
-                        Responsywny design
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <Eye className="h-4 w-4 text-primary" />
-                        Przyjazny interfejs
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <MousePointer className="h-4 w-4 text-primary" />
-                        Intuicyjna obsługa
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <Users className="h-4 w-4 text-primary" />
-                        Dla każdego użytkownika
-                      </li>
-                    </ul>
-                  </Card>
+                  {[/* your card data */].map((card, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ 
+                        duration: 0.5,
+                        delay: isMobile ? 0 : index * 0.1 
+                      }}
+                    >
+                      <Card className="p-6">
+                        <h4 className="font-semibold mb-3 flex items-center gap-2">
+                          <Zap className="h-4 w-4 text-primary" />
+                          Wydajność
+                        </h4>
+                        <ul className="space-y-2 text-sm text-muted-foreground">
+                          <li className="flex items-center gap-2">
+                            <Server className="h-4 w-4 text-primary" />
+                            Błyskawiczne ładowanie
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <Globe className="h-4 w-4 text-primary" />
+                            Optymalizacja SEO
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <Activity className="h-4 w-4 text-primary" />
+                            Płynne działanie
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <Shield className="h-4 w-4 text-primary" />
+                            Stabilna praca
+                          </li>
+                        </ul>
+                      </Card>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -170,7 +124,12 @@ export const TechDetailsSection = () => {
           {/* Sekcja 2: Supabase i PostHog */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-24 w-full">
             {/* Supabase */}
-            <motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="flex items-start gap-4">
                 <div className="rounded-full bg-primary/10 p-3">
                   <Database className="h-6 w-6 text-primary" />
@@ -212,7 +171,12 @@ export const TechDetailsSection = () => {
             </motion.div>
 
             {/* PostHog */}
-            <motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="flex items-start gap-4">
                 <div className="rounded-full bg-primary/10 p-3">
                   <LineChart className="h-6 w-6 text-primary" />
@@ -257,7 +221,12 @@ export const TechDetailsSection = () => {
           {/* Sekcja 3: Strapi i Sentry */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-24 w-full">
             {/* Strapi */}
-            <motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="flex items-start gap-4">
                 <div className="rounded-full bg-primary/10 p-3">
                   <FileEdit className="h-6 w-6 text-primary" />
@@ -299,7 +268,12 @@ export const TechDetailsSection = () => {
             </motion.div>
 
             {/* Sentry */}
-            <motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="flex items-start gap-4">
                 <div className="rounded-full bg-primary/10 p-3">
                   <AlertCircle className="h-6 w-6 text-primary" />

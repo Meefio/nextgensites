@@ -41,12 +41,6 @@ const features = [
 ]
 
 export function Features() {
-  const headerRef = useRef(null)
-  const isHeaderInView = useInView(headerRef, {
-    once: true,
-    margin: "0px 0px -20% 0px"
-  })
-
   const [screenSize, setScreenSize] = useState<'mobile' | 'tablet' | 'desktop'>('mobile')
 
   useEffect(() => {
@@ -66,13 +60,15 @@ export function Features() {
   }, [])
 
   const calculateDelay = (index: number, currentScreenSize: 'mobile' | 'tablet' | 'desktop') => {
+    if (currentScreenSize === 'mobile') return 0
+
     switch (currentScreenSize) {
       case 'desktop':
         return (index % 3) * 0.15 + Math.floor(index / 3) * 0.3
       case 'tablet':
         return (index % 2) * 0.15 + Math.floor(index / 2) * 0.3
       default:
-        return index * 0.01
+        return 0
     }
   }
 
@@ -81,46 +77,32 @@ export function Features() {
       id="korzysci" 
       className="container flex flex-col items-center gap-6 py-14 md:pb-14 sm:gap-7 scroll-mt-header"
     >
-      <div ref={headerRef}>
-        <AnimatedElement 
-          className="flex flex-col gap-3"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: isHeaderInView ? 1 : 0, y: isHeaderInView ? 0 : 20 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <span className="font-bold uppercase text-primary text-center">
-            Dlaczego nextgen sites?
-          </span>
-          <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl text-balance text-center">
-            Nowoczesność, która się opłaca
-          </h2>
-          <p className="text-lg text-muted-foreground text-balance max-w-xl text-center">
-            Nowoczesna technologia, lepsze wyniki – przyciągnij klientów i wyprzedź konkurencję!
-          </p>
-        </AnimatedElement>
-      </div>
+      <AnimatedElement 
+        className="flex flex-col gap-3"
+        delay={0.2}
+        viewport={{ once: true, margin: "-20% 0px" }}
+      >
+        <span className="font-bold uppercase text-primary text-center">
+          Dlaczego nextgen sites?
+        </span>
+        <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl text-balance text-center">
+          Nowoczesność, która się opłaca
+        </h2>
+        <p className="text-lg text-muted-foreground text-balance max-w-xl text-center">
+          Nowoczesna technologia, lepsze wyniki – przyciągnij klientów i wyprzedź konkurencję!
+        </p>
+      </AnimatedElement>
 
       <div className="mt-6 grid auto-rows-fr grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((feature, index) => {
           const Icon = feature.icon
           const showBorderBeam = index % 2 !== 0
-          const cardRef = useRef(null)
-          const isCardInView = useInView(cardRef, {
-            once: true,
-            margin: "0px 0px -20% 0px"
-          })
 
           return (
             <AnimatedElement
               key={feature.title}
-              ref={cardRef}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: isCardInView ? 1 : 0, y: isCardInView ? 0 : 30 }}
-              transition={{
-                duration: 0.5,
-                delay: calculateDelay(index, screenSize),
-                ease: [0.4, 0, 0.2, 1]
-              }}
+              delay={calculateDelay(index, screenSize)}
+              viewport={{ once: true, margin: "-20% 0px" }}
             >
               <Card className="shadow-lg relative h-full">
                 {showBorderBeam && (

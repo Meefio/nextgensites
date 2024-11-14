@@ -1,54 +1,10 @@
 'use client'
 
 import Link from 'next/link'
-import { BorderBeam } from '@/components/magicui/border-beam'
 import { Button } from '@/components/ui/button'
-import { useEffect, useRef } from 'react'
-import gsap from 'gsap'
+import { AnimatedElement } from './motion/animated-element'
 
 export function CtaSection() {
-	const buttonRef = useRef<HTMLDivElement>(null)
-
-	useEffect(() => {
-		const button = buttonRef.current
-
-		// Animacja przy hover
-		const handleMouseEnter = () => {
-			gsap.to(button, {
-				scale: 1.05,
-				y: -5,
-				duration: 0.3,
-				ease: 'power2.out',
-			})
-		}
-
-		const handleMouseLeave = () => {
-			gsap.to(button, {
-				scale: 1,
-				y: 0,
-				duration: 0.3,
-				ease: 'power2.in',
-			})
-		}
-
-		// Pulsująca animacja
-		gsap.to(button, {
-			scale: 1.02,
-			duration: 1,
-			repeat: -1,
-			yoyo: true,
-			ease: 'sine.inOut',
-		})
-
-		button?.addEventListener('mouseenter', handleMouseEnter)
-		button?.addEventListener('mouseleave', handleMouseLeave)
-
-		return () => {
-			button?.removeEventListener('mouseenter', handleMouseEnter)
-			button?.removeEventListener('mouseleave', handleMouseLeave)
-		}
-	}, [])
-
 	return (
 		<section className='relative container flex flex-col items-center gap-6 py-14 md:py-24 sm:gap-10 rounded-md border border-border bg-secondary overflow-hidden'>
 			<div className='absolute inset-0 w-full h-full opacity-[0.03] select-none pointer-events-none'>
@@ -77,14 +33,27 @@ export function CtaSection() {
 				</div>
 			</div>
 
-			<h2 className='relative font-heading text-3xl font-semibold tracking-tight sm:text-4xl text-balance max-w-xl sm:leading-tight text-center'>
+			<AnimatedElement
+				as="h2"
+				className='relative font-heading text-3xl font-semibold tracking-tight sm:text-4xl text-balance max-w-xl sm:leading-tight text-center'
+				delay={0.2}
+			>
 				Gotowy na nową stronę, która przyciągnie klientów?
-			</h2>
-			<p className='relative text-lg text-muted-foreground text-balance max-w-lg text-center'>
+			</AnimatedElement>
+
+			<AnimatedElement
+				as="p"
+				className='relative text-lg text-muted-foreground text-balance max-w-lg text-center'
+				delay={0.4}
+			>
 				Rozpocznij transformację swojej obecności online już dziś!
 				Pierwsza konsultacja jest bezpłatna.
-			</p>
-			<div ref={buttonRef}>
+			</AnimatedElement>
+
+			<AnimatedElement
+				delay={0.6}
+				className="scale-100 hover:scale-105 transition-transform duration-300"
+			>
 				<Button
 					size='lg'
 					asChild
@@ -93,7 +62,7 @@ export function CtaSection() {
 				>
 					<Link href='#kontakt'>Skontaktuj się z nami</Link>
 				</Button>
-			</div>
+			</AnimatedElement>
 		</section>
 	)
 }
