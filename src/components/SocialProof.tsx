@@ -1,81 +1,76 @@
+"use client"
+
+import { useInView } from "framer-motion"
+import { useRef } from "react"
 import { AnimatedElement } from "@/components/motion/animated-element"
 
 export function SocialProof() {
-   return (
-     <section className="text-center mx-auto max-w-[80rem] px-6 md:px-8 py-14 min-h-72 overflow-hidden">
-       <div className="mx-auto max-w-screen-xl px-4 md:px-8">
-         <AnimatedElement 
-           as="h2" 
-           delay={0.6}
-           className="text-center text-sm font-semibold text-muted-foreground"
-         >
-           FIRMY, KTÓRE KORZYSTAJĄ Z NEXT.JS
-         </AnimatedElement>
-         <AnimatedElement delay={0.7}>
-           <div className="mt-6">
-             <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-16 [&_path]:fill-white">
-               <AnimatedElement 
-                 as="li" 
-                 delay={0.8}
-                 className="hover:scale-90 duration-300 transition-all"
-               >
-                 <img
-                   alt="Netflix"
-                   src="/images/netflix-3.svg"
-                   className="h-8 w-28 px-2 brightness-0 invert"
-                 />
-               </AnimatedElement>
-               
-               <AnimatedElement 
-                 as="li" 
-                 delay={0.9}
-                 className="hover:scale-90 duration-300 transition-all"
-               >
-                 <img
-                   alt="Nike"
-                   src="/images/nike.svg"
-                   className="h-8 w-28 px-2 brightness-0 invert"
-                 />
-               </AnimatedElement>
-               <AnimatedElement 
-                 as="li" 
-                 delay={1.0}
-                 className="hover:scale-90 duration-300 transition-all"
-               >
-                 <img
-                   alt="OpenAI"
-                   src="/images/openai.svg"
-                   className="h-8 w-28 px-2 brightness-0 invert"
-                 />
-               </AnimatedElement>
-               <AnimatedElement 
-                 as="li" 
-                 delay={1.1}
-                 className="hover:scale-90 duration-300 transition-all"
-               >
-                 <img
-                   alt="Tiktok"
-                   src="/images/tiktok.svg"
-                   className="h-8 w-28 px-2 brightness-0 invert"
-                 />
-               </AnimatedElement>
-               <AnimatedElement 
-                 as="li" 
-                 delay={1.2}
-                 className="hover:scale-90 duration-300 transition-all"
-               >
-                 <img
-                   alt="twitch"
-                   src="/images/twitch.svg"
-                   className="h-8 w-28 px-2 brightness-95"
-                 />
-               </AnimatedElement>
-             </ul>
-           </div>
-         </AnimatedElement>
-       </div>
-       <div className="[--color:hsl(var(--accent))] pointer-events-none relative -z-[2] mx-auto h-[80rem] mt-[-33rem] mb-[-40rem] sm:h-[70rem] sm:mt-[-25rem] sm:mb-[-32rem] overflow-hidden [mask-image:radial-gradient(ellipse_at_center_center,#000,transparent_50%)] before:absolute before:inset-0 before:h-full before:w-full before:opacity-40 before:[background-image:radial-gradient(circle_at_bottom_center,var(--color),transparent_70%)] after:absolute after:-left-1/2 after:top-1/2 after:aspect-[1/0.7] after:w-[200%] after:rounded-[50%] after:border-t after:border-border after:bg-background" />
-     </section>
-   );
- }
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, {
+    once: true,
+    margin: "0px 0px -200px 0px" // Rozpocznie animację 200px przed widocznością elementu
+  })
+
+  const logos = [
+    { alt: "Netflix", src: "/images/netflix-3.svg", className: "brightness-0 invert" },
+    { alt: "Nike", src: "/images/nike.svg", className: "brightness-0 invert" },
+    { alt: "OpenAI", src: "/images/openai.svg", className: "brightness-0 invert" },
+    { alt: "Tiktok", src: "/images/tiktok.svg", className: "brightness-0 invert" },
+    { alt: "twitch", src: "/images/twitch.svg", className: "brightness-95" }
+  ]
+
+  return (
+    <section 
+      ref={sectionRef}
+      className="text-center mx-auto max-w-[80rem] px-6 md:px-8 py-14 min-h-72 overflow-hidden"
+    >
+      <div className="mx-auto max-w-screen-xl px-4 md:px-8">
+        <AnimatedElement 
+          as="h2" 
+          delay={isInView ? 0.2 : 0}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
+          className="text-center text-sm font-semibold text-muted-foreground"
+        >
+          FIRMY, KTÓRE KORZYSTAJĄ Z NEXT.JS
+        </AnimatedElement>
+
+        <AnimatedElement 
+          delay={isInView ? 0.3 : 0}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isInView ? 1 : 0 }}
+        >
+          <div className="mt-6">
+            <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-16 [&_path]:fill-white">
+              {logos.map((logo, index) => (
+                <AnimatedElement 
+                  key={logo.alt}
+                  as="li" 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ 
+                    opacity: isInView ? 1 : 0, 
+                    y: isInView ? 0 : 20 
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    delay: isInView ? 0.4 + (index * 0.1) : 0,
+                    ease: [0.4, 0, 0.2, 1]
+                  }}
+                  className="hover:scale-90 duration-300 transition-all"
+                >
+                  <img
+                    alt={logo.alt}
+                    src={logo.src}
+                    className={`h-8 w-28 px-2 ${logo.className}`}
+                  />
+                </AnimatedElement>
+              ))}
+            </ul>
+          </div>
+        </AnimatedElement>
+      </div>
+      <div className="[--color:hsl(var(--accent))] pointer-events-none relative -z-[2] mx-auto h-[80rem] mt-[-33rem] mb-[-40rem] sm:h-[70rem] sm:mt-[-25rem] sm:mb-[-32rem] overflow-hidden [mask-image:radial-gradient(ellipse_at_center_center,#000,transparent_50%)] before:absolute before:inset-0 before:h-full before:w-full before:opacity-40 before:[background-image:radial-gradient(circle_at_bottom_center,var(--color),transparent_70%)] after:absolute after:-left-1/2 after:top-1/2 after:aspect-[1/0.7] after:w-[200%] after:rounded-[50%] after:border-t after:border-border after:bg-background" />
+    </section>
+  )
+}
  

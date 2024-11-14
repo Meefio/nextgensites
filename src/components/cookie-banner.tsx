@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { X } from "lucide-react";
+import { AnimatedElement } from "@/components/motion/animated-element";
 
 type CookieConsent = {
   necessary: boolean;
@@ -21,11 +22,17 @@ export function CookieBanner() {
     analytics: false,
     marketing: false,
   });
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     const savedConsent = localStorage.getItem("cookieConsent");
     if (!savedConsent) {
-      setShowBanner(true);
+      const timer = setTimeout(() => {
+        setShowBanner(true);
+        setIsReady(true);
+      }, 2000);
+
+      return () => clearTimeout(timer);
     }
   }, []);
 
@@ -64,34 +71,59 @@ export function CookieBanner() {
     }
   };
 
-  if (!showBanner) return null;
+  if (!showBanner || !isReady) return null;
 
   return (
-    <div 
-      className="fixed inset-x-0 bottom-0 z-50 px-4 pb-4 lg:inset-x-auto lg:right-4 lg:max-w-[450px]" 
-      role="dialog" 
+    <AnimatedElement
+      className="fixed inset-x-0 bottom-0 z-50 px-4 pb-4 lg:inset-x-auto lg:right-4 lg:max-w-[450px]"
+      role="dialog"
       aria-labelledby="cookie-title"
       aria-describedby="cookie-description"
+      initial={{ opacity: 0, y: 100, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{
+        duration: 0.4,
+        ease: [0.4, 0, 0.2, 1],
+      }}
+      exit={{ opacity: 0, y: 100, scale: 0.95 }}
     >
       <div className="relative mx-auto max-w-4xl lg:mx-0">
         <Card className="p-4 shadow-lg md:p-6">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="absolute right-2 top-2"
-            onClick={() => setShowBanner(false)}
-            aria-label="Zamknij banner plików cookie"
+          <AnimatedElement
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2 }}
           >
-            <X className="h-4 w-4" />
-          </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute right-2 top-2"
+              onClick={() => setShowBanner(false)}
+              aria-label="Zamknij banner plików cookie"
+            >
+              <X className="h-4 w-4" />
+            </Button>
+          </AnimatedElement>
 
           <div className="space-y-3">
-            <h3 id="cookie-title" className="text-lg font-semibold">
+            <AnimatedElement
+              as="h3"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="text-lg font-semibold"
+              id="cookie-title"
+            >
               Szanujemy Twoją prywatność
-            </h3>
+            </AnimatedElement>
             
             {!showDetails ? (
-              <div className="space-y-4">
+              <AnimatedElement
+                className="space-y-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+              >
                 <p id="cookie-description" className="text-sm text-muted-foreground">
                   Ta strona używa plików cookie, aby zapewnić najlepsze wrażenia z korzystania z naszej witryny. 
                   Możesz zaakceptować wszystkie, odrzucić opcjonalne lub dostosować swoje preferencje.
@@ -124,9 +156,14 @@ export function CookieBanner() {
                     Zaakceptuj wszystkie
                   </Button>
                 </div>
-              </div>
+              </AnimatedElement>
             ) : (
-              <div className="space-y-4">
+              <AnimatedElement
+                className="space-y-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              >
                 <p id="cookie-description" className="text-sm text-muted-foreground">
                   Używamy plików cookie, aby poprawić Twoje wrażenia z korzystania z naszej strony. 
                   Niektóre z nich są niezbędne do funkcjonowania podstawowych funkcji, podczas gdy 
@@ -214,11 +251,11 @@ export function CookieBanner() {
                     Zaakceptuj wszystkie
                   </Button>
                 </div>
-              </div>
+              </AnimatedElement>
             )}
           </div>
         </Card>
       </div>
-    </div>
+    </AnimatedElement>
   );
 } 
