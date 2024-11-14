@@ -51,7 +51,7 @@ export function SocialProof() {
                     opacity: isInView ? 1 : 0, 
                     y: isInView ? 0 : 20 
                   }}
-                  className="only-desktop-animation md:hover:scale-90 duration-300 transition-all"
+                  className="only-desktop-animation md:hover:scale-90 md:transition-all duration-300"
                   transition={{
                     duration: 0.5,
                     delay: isInView ? 0.4 + (index * 0.1) : 0,
