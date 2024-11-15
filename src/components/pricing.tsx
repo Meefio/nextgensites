@@ -1,13 +1,14 @@
 'use client'
 
 import { useState } from 'react'
-import { Check } from 'lucide-react'
+import { Check, Calendar } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Switch } from '@/components/ui/switch'
 import { AnimatedElement } from '@/components/motion/animated-element'
+import { BookMeetingDialog } from '@/components/book-meeting-dialog'
 
 export function Pricing() {
 	const [isMonthly, setIsMonthly] = useState(true)
@@ -55,8 +56,7 @@ export function Pricing() {
 			name: 'Indywidualny',
 			monthlyPrice: 'Ustalmy',
 			oneTimePrice: 'Ustalmy',
-			description:
-				'Pełna customizacja i nielimitowane możliwości dla wymagających firm',
+			description: 'Umów się na bezpłatną konsultację i omówmy Twój projekt szczegółowo',
 			features: [
 				'Dedykowane funkcje na zamówienie',
 				'Możliwość dodania elementów 3D',
@@ -70,12 +70,17 @@ export function Pricing() {
 				'Moduł opinii i recenzji',
 				'Chatbot lub widget czatu',
 			],
+			highlight: true,
 		},
 	]
 
 	const PriceDisplay = ({ plan }: { plan: typeof plans[0] }) => {
 		if (plan.name === 'Indywidualny') {
-			return <span className='text-lg'>wycena indywidualna</span>
+			return (
+				<div className="flex items-center gap-4">
+					<span className='text-lg'>wycena indywidualna</span>
+				</div>
+			)
 		}
 
 		return (
@@ -170,9 +175,14 @@ export function Pricing() {
 									<div className='mt-5'>
 										<PriceDisplay plan={plan} />
 									</div>
-									<Button size='lg' asChild className='mt-10 w-full'>
-										<a href='/kontakt'>Skontaktuj się z nami</a>
-									</Button>
+									{plan.name === 'Indywidualny' ? (
+										<BookMeetingDialog>
+											<Button size='lg' className='mt-10 w-full gap-2'>
+												<Calendar className="w-4 h-4" />
+												Umów się na spotkanie
+											</Button>
+										</BookMeetingDialog>
+									) : null}
 								</div>
 								<ul className='space-y-2 px-7 py-10 flex-grow'>
 									{plan.features.map((feature, featureIndex) => (
