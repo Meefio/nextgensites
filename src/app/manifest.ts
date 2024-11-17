@@ -39,7 +39,7 @@ export default function manifest(): MetadataRoute.Manifest {
     shortcuts: [
       {
         name: 'Kontakt',
-        url: '/kontakt',
+        url: '/#kontakt',
         description: 'Skontaktuj się z nami',
       },
     ],
