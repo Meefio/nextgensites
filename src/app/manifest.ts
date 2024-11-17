@@ -36,13 +36,6 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
     orientation: 'portrait',
     categories: ['business', 'technology', 'web development'],
-    shortcuts: [
-      {
-        name: 'Kontakt',
-        url: '/#kontakt',
-        description: 'Skontaktuj się z nami',
-      },
-    ],
     screenshots: [
       {
         src: '/images/home.png',

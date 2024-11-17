@@ -3,9 +3,8 @@ import { Inter, Instrument_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
 import { CookieBanner } from "@/components/cookie-banner";
-import { defaultMetadata } from './metadata';
 import { Metadata, Viewport } from 'next'
-import { MetadataRoute } from 'next'
+
 
 
 const fontSans = Inter({
