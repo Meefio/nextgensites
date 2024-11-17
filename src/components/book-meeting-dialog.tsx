@@ -27,6 +27,7 @@ const formSchema = z.object({
 
 export function BookMeetingDialog({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const { toast } = useToast()
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -38,20 +39,21 @@ export function BookMeetingDialog({ children }: { children: React.ReactNode }) {
   })
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    setIsSubmitting(true)
     try {
       const response = await fetch('/api/book-meeting', {
         method: 'POST',
-        body: JSON.stringify({
-          ...values,
-          date: format(values.date, 'yyyy-MM-dd'),
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
       })
 
-      if (!response.ok) throw new Error('Błąd podczas rezerwacji')
+      if (!response.ok) {
+        throw new Error('Błąd podczas rezerwacji')
+      }
 
       toast({
         title: 'Spotkanie zarezerwowane!',
-        description: 'Link do spotkania został wysłany na podany adres email.',
+        description: 'Szczegóły zostały wysłane na podany adres email.',
       })
       setOpen(false)
     } catch (error) {
@@ -60,6 +62,8 @@ export function BookMeetingDialog({ children }: { children: React.ReactNode }) {
         description: 'Nie udało się zarezerwować spotkania. Spróbuj ponownie.',
         variant: 'destructive',
       })
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -82,9 +86,14 @@ export function BookMeetingDialog({ children }: { children: React.ReactNode }) {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  
+                  <FormLabel htmlFor="name" className="sr-only">Imię</FormLabel>
                   <FormControl>
-                    <Input placeholder="Imię" {...field} />
+                    <Input 
+                      id="name" 
+                      placeholder="Imię" 
+                      aria-label="Wprowadź imię"
+                      {...field} 
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -96,9 +105,15 @@ export function BookMeetingDialog({ children }: { children: React.ReactNode }) {
               name="email"
               render={({ field }) => (
                 <FormItem>
-               
+                  <FormLabel htmlFor="email" className="sr-only">Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="Email" type="email" {...field} />
+                    <Input 
+                      id="email" 
+                      placeholder="Email" 
+                      type="email" 
+                      aria-label="Wprowadź adres email"
+                      {...field} 
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -110,9 +125,10 @@ export function BookMeetingDialog({ children }: { children: React.ReactNode }) {
               name="date"
               render={({ field }) => (
                 <FormItem className="flex flex-col items-center">
-                  <FormLabel className="pb-2">Data spotkania</FormLabel>
+                  <FormLabel htmlFor="date" className="sr-only">Data spotkania</FormLabel>
                   <FormControl>
                     <Calendar
+                      id="date"
                       mode="single"
                       selected={field.value}
                       onSelect={field.onChange}
@@ -122,6 +138,7 @@ export function BookMeetingDialog({ children }: { children: React.ReactNode }) {
                         return date < now || date.getDay() === 0 || date.getDay() === 6
                       }}
                       className="rounded-md border"
+                      aria-label="Wybierz datę spotkania"
                     />
                   </FormControl>
                   <FormMessage />
@@ -134,10 +151,10 @@ export function BookMeetingDialog({ children }: { children: React.ReactNode }) {
               name="time"
               render={({ field }) => (
                 <FormItem className="flex flex-col items-center">
-                  <FormLabel className="pb-2">Godzina spotkania</FormLabel>
+                  <FormLabel htmlFor="time" className="sr-only">Godzina spotkania</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
-                      <SelectTrigger>
+                      <SelectTrigger id="time" aria-label="Wybierz godzinę spotkania">
                         <SelectValue placeholder="Wybierz godzinę" />
                       </SelectTrigger>
                     </FormControl>
@@ -154,8 +171,8 @@ export function BookMeetingDialog({ children }: { children: React.ReactNode }) {
               )}
             />
 
-            <Button type="submit" className="w-full">
-              Zarezerwuj spotkanie
+            <Button type="submit" className="w-full" disabled={isSubmitting}>
+              {isSubmitting ? 'Rezerwowanie...' : 'Zarezerwuj spotkanie'}
             </Button>
           </form>
         </Form>
