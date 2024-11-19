@@ -98,7 +98,7 @@ export function CookieBanner() {
               variant="ghost"
               size="icon"
               className="absolute right-2 top-2"
-              onClick={() => setShowBanner(false)}
+              onClick={handleRejectAll}
               aria-label="Zamknij banner plików cookie"
             >
               <X className="h-4 w-4" />

@@ -42,12 +42,13 @@ export function Pricing() {
 			features: [
 				'Wszystko co w planie Podstawowym',
 				'Do 7 sekcji na stronie',
-				'Możliwość edycji treści strony (Strapi CMS)',
-				'Blog z systemem edycji treści (Strapi CMS)',
+				'Możliwość edycji treści strony',
+				'Blog z systemem edycji treści',
 				'Monitoring wydajności (Sentry)',
 				'Analityka zachowań (PostHog)',
 				'Priorytetowe wsparcie',
 				'Integracja z mapami Google',
+				'Interaktywna mapa Google z lokalizacją firmy',
 			],
 			isPopular: true,
 		},
@@ -152,9 +153,9 @@ export function Pricing() {
 						delay={typeof window !== 'undefined' && window.innerWidth >= 768 ? index * 0.2 : 0}
 					>
 						<Card
-							className={`relative shadow-lg ${plan.isPopular ? 'border-2 border-primary' : ''}`}
+							className={`relative h-full shadow-lg ${plan.isPopular ? 'border-2 border-primary' : ''}`}
 						>
-							<CardContent className='divide-y p-0 flex flex-col h-full'>
+							<CardContent className='flex h-full flex-col p-0'>
 								<div className='flex flex-col items-center px-7 py-10'>
 									{plan.isPopular && (
 										<span className='absolute inset-x-0 -top-5 mx-auto rounded-full bg-primary px-3 py-2 text-center text-sm font-semibold text-primary-foreground shadow-md w-40'>
@@ -174,7 +175,7 @@ export function Pricing() {
 										<a href='/kontakt'>Skontaktuj się z nami</a>
 									</Button>
 								</div>
-								<ul className='space-y-2 px-7 py-10 flex-grow'>
+								<ul className='flex-1 space-y-2 px-7 py-10'>
 									{plan.features.map((feature, featureIndex) => (
 										<li
 											key={featureIndex}
@@ -188,7 +189,7 @@ export function Pricing() {
 									))}
 								</ul>
 								{plan.name !== 'Indywidualny' && (
-									<div className='px-7 py-4 mt-auto'>
+									<div className='px-7 py-4'>
 										<p className='text-xs text-muted-foreground'>
 											* Podane ceny są cenami netto, należy doliczyć 23%
 											VAT
